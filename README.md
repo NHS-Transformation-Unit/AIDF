@@ -34,7 +34,7 @@ To be edited.
 <br/>
 
 ### `data`
-Where the extract of NHS Futures short form business case (SFBC) data will be saved for loading and processing.
+Where the extracted NHS Futures short form business case (SFBC) data will be saved for loading and processing.
 
 ### `images`
 
