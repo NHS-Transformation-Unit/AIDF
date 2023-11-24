@@ -14,7 +14,7 @@ library(stringr)
 #Data processing script - takes data extracted using the 'SFBC_Load.R' script and cleans the outputs
 
 
-source("C:/Users/elliot.royle/OneDrive - Midlands and Lancashire CSU/Git/AIDF/src/processing/r_scripts/SFBC_ETL.R")
+source("C:/Users/elliot.royle/OneDrive - Midlands and Lancashire CSU/Git/AIDF/src/processing/r_scripts/SFBC_ETL.R") # This code doesn't appear to run the entire script, only calls the source() script from within it
 
 
 # Preparing the different files to be joined to
@@ -30,11 +30,17 @@ NHS_Trust_Lookup <- read_excel(NHS_Trust_Location_File_Path)
 # Cleaning the NHS Trust Lookup
 
 
+capitalise_NHS <- function(x) {
+  gsub("\\bNHS\\b", "NHS", x, ignore.case = TRUE)
+}
+
 NHS_Trust_Lookup <- NHS_Trust_Lookup %>%
   mutate(Name = str_to_title(Name)) %>%
   select(c(2, 1, 10, 11, 12))
 
 NHS_Trust_Lookup$Name <- capitalise_NHS(NHS_Trust_Lookup$Name)
+
+names(NHS_Trust_Lookup)[names(NHS_Trust_Lookup) == "Name"] <- "Trust"
 
 
 # Cleaning the AIDF Summary
@@ -47,5 +53,17 @@ AIDF_Ref_Remove <- 11
 
 AIDF_Ref_Proc <- AIDF_Ref_Proc %>% 
   filter(row_number() != AIDF_Ref_Remove)
+
+
+# Joining the files
+
+
+AIDF_Expanded <- left_join(AIDF_Proc, AIDF_Ref_Proc, by = "SFBC_ID")
+
+AIDF_Geo_Final <- left_join(AIDF_Expanded, NHS_Trust_Lookup, by = "Trust") # This results in 24 missing locations/organisation codes due to the lookup being out of date
+
+
+
+
 
 
