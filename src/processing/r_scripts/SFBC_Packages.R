@@ -1,8 +1,11 @@
 # Packages used in the AIDF Short Form Business Case (SFBC) ETL pipeline.
 
-library(readxl)
-library(purrr)
-library(tidyverse)
-library(tidyr)
-library(here)
-library(stringr)
+
+packages <- c("readxl",
+              "purrr",
+              "tidyverse",
+              "tidyr",
+              "here",
+              "stringr")
+
+lapply(packages, library, character.only=TRUE)
