@@ -1,23 +1,16 @@
-setwd("C:/Users/elliot.royle/OneDrive - Midlands and Lancashire CSU/Git/AIDF/data/Raw SFBC")
-getwd()
+# Script for the loading of SFBC data from raw Excel files extracted from NHS Futures site
 
-library(readxl)
-library(purrr)
-library(tidyverse)
-library(tidyr)
+folder_path <- paste0(here(), "/data/Raw SFBC/")
 
-folder_path <- getwd()
-
-sheet_names <- function(file_path){
+sheet_names <- function(file_path) {
   
-  excel_sheets(file_path)
-  
+    excel_sheets(file_path)
+
 }
 
-excel_files <- list.files(path = folder_path, pattern = "\\.xlsx$", full.names = FALSE)
+excel_files <- list.files(path = folder_path, pattern = "\\.xlsx$", full.names = TRUE)
 
 all_sheet_names <- map(excel_files, sheet_names)
-
 
 max_length <- max(lengths(all_sheet_names))
 all_sheet_names_padded <- lapply(all_sheet_names, function(x) c(x, rep(NA, max_length - length(x))))
@@ -31,8 +24,9 @@ all_sheet_names_df_long <- all_sheet_names_df %>%
 
 target_sheets <- all_sheet_names_df_long %>%
   filter(!Sheet_Name %in% c("Front Sheet", "dropdowns", "Master Sheet",
-                            "AI Supplier Cost Detail", "GM Activity & Perfromance"))
-
+                            "AI Supplier Cost Detail", "GM Activity & Perfromance",
+                            "apportioned costs and benefits", "Year by Year - Trusts", 
+                            "Saving calculation methodology"))
 
 read_sheets_and_bind <- function(folder_path, sheets_to_read, range) {
   
@@ -58,12 +52,8 @@ read_sheets_and_bind <- function(folder_path, sheets_to_read, range) {
   return(all_data)
 }
 
-folder_path <- getwd()
 sheets_to_read <- target_sheets[,2]
 range <- "A1:B5"
 
 result <- read_sheets_and_bind(folder_path, sheets_to_read, range) %>%
   rename("Field1" = 1, "Field2" = 2)
-
-result_wide <- result %>%
-  spread(Field1, Field2) # Script resulting in error where 10 rows have a NULL (NA) return for both Field 1 and Field 2.
