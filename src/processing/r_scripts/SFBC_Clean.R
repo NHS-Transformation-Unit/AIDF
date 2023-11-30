@@ -152,15 +152,23 @@ NWL1_df <- NWL1_df %>%
   slice(-remove_NWL1) %>%
   mutate(`Org code` = NWL1_Org)
 
+
 # Cleaning SE2
 
-SE2_Dupli <- 5
-SE2_df <- rbind(SE2_df, SE2_df[SE2_Dupli, ], SE2_df[SE2_Dupli, ])
+SE2_df_dup <- data.frame(
+  SFBC_ID = "SE2_SFBC",
+  Region = "South East",
+  `Network Name 1` = "Surrey, Sussex and Frimley Imaging Network",
+  `Network Name 2` = "South East 2",
+  Trust = c("Queen Victoria Hospital NHS Foundation Trust", "Surrey & Sussex Healthcare NHS Trust"),
+  `Org code` = c("RPC", "RTP")
+  
+) %>%
+  rename("Network Name 1" = 3,
+         "Network Name 2" = 4,
+         "Org code" = 6)
 
-SE2_Row <- c(5, 6, 7)
-SE2_Value <- c("University Hospitals Sussex NHS Foundation Trust",
-               "Queen Victoria Hospital NHS Foundation Trust",
-               "Surrey & Sussex Healthcare NHS Trust")
+SE2_df_comb <- rbind(SE2_df, SE2_df_dup)
 
 SE2_Org <- c("RDU",
              "RTK",
@@ -170,9 +178,8 @@ SE2_Org <- c("RDU",
              "RPC",
              "RTP")
 
-SE2_df <- SE2_df %>% 
-  mutate(`Org code` = SE2_Org,
-         Trust = ifelse(row_number() %in% SE2_Row, SE2_Value, Trust))
+SE2_df <- SE2_df_comb %>% 
+  mutate(`Org code` = SE2_Org)
 
 # Combining all cleaned df
 
