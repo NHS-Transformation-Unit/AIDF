@@ -31,10 +31,4 @@ AIDF_Ref_Proc <- AIDF_Ref_Proc %>%
 
 AIDF_Expanded <- left_join(AIDF_Proc, AIDF_Ref_Proc, by = "SFBC_ID")
 
-AIDF_Geo_Final <- left_join(AIDF_Expanded, NHS_Trust_Lookup, by = "Org code") # This results in 24 missing locations/organisation codes due to the lookup being out of date
-
-
-
-
-
-
+AIDF_Geo_Final <- left_join(AIDF_Expanded, NHS_Trust_Lookup, by = "Org code")

@@ -172,7 +172,7 @@ SE2_Org <- c("RDU",
 
 SE2_df <- SE2_df %>% 
   mutate(`Org code` = SE2_Org,
-         Trust = ifelse(row_number() == SE2_Row, SE2_Value, Trust))
+         Trust = ifelse(row_number() %in% SE2_Row, SE2_Value, Trust))
 
 # Combining all cleaned df
 
