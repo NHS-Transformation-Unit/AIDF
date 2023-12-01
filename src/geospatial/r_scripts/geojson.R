@@ -1,6 +1,6 @@
 
 # Source config urls ------------------------------------------------------
-source("../../src/config/geojson_urls.R")
+source("../../src/geospatial/r_scripts/geojson_urls.R")
 
 
 # Load geojson files ------------------------------------------------------

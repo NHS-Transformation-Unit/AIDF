@@ -1,1 +1,1 @@
-icb_lookup_coord <- read_excel("../data/external/icb_long_lat_map.xlsx")
+icb_lookup_coord <- read_excel("../data/Geospatial/icb_long_lat_map.xlsx")
