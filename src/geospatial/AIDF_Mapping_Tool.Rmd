@@ -1,5 +1,5 @@
 ---
-title: "ICB Exploratory Analysis Pack"
+title: "Artificial Intelligence Diagnostic Fund - Network Mapping"
 author: "NHS Transformation Unit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
@@ -8,7 +8,7 @@ output:
     toc_depth: 2
     toc_float: true
     toc_collapsed: true
-    css: ../config/nhs_tu_theme.css
+    css: ../src/config/nhs_tu_theme.css
 params:
   icb: QE1
 ---
@@ -17,10 +17,10 @@ params:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
-source("../requirements/packages.R")
-source("../data/r_scripts/geojson.R")
-source("../data/r_scripts/deprivation.R")
-source("../data/r_scripts/external_read.R")
+source("../src/geospatial/r_scripts/packages.R")
+source("../src/geospatial/r_scripts/geojson.R")
+source("../src/geospatial/r_scripts/deprivation.R")
+source("../src/geospatial/r_scripts/external_read.R")
 
 icb_name <- as.data.frame(lsoa_lookup) %>%
   filter(ICB22CDH == params$icb) %>%
