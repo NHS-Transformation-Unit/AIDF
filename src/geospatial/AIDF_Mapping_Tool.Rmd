@@ -1,5 +1,5 @@
 ---
-title: "Artificial Intelligence Diagnostic Fund - Network Mapping"
+title: "AIDF Network Mapping"
 author: "NHS Transformation Unit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
