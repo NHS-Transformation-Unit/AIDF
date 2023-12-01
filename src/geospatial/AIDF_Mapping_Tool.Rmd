@@ -1,0 +1,115 @@
+---
+title: "ICB Exploratory Analysis Pack"
+author: "NHS Transformation Unit"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+ html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    toc_collapsed: true
+    css: ../config/nhs_tu_theme.css
+params:
+  icb: QE1
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+source("../requirements/packages.R")
+source("../data/r_scripts/geojson.R")
+source("../data/r_scripts/deprivation.R")
+source("../data/r_scripts/external_read.R")
+
+icb_name <- as.data.frame(lsoa_lookup) %>%
+  filter(ICB22CDH == params$icb) %>%
+  group_by(ICB22NM) %>%
+  summarise()
+
+icb_name <- icb_name[[1,1]]
+
+```
+
+```{r logo, echo = FALSE}
+
+htmltools::img(src = knitr::image_uri(paste0(here(), "/images/TU_logo_large.png")), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:5%; padding:10px;',
+               width = "180px",
+               heigth = "180px")
+
+```
+
+## Introduction
+***
+
+This pack provides an overview of key demographic, health and socioeconomic metrics for **`r icb_name`**. Where available this data will be available to the lowest level of geography and will show how the ICB compares to the rest of England and how these metrics have changed over time.
+
+The metrics within this pack relate to:
+
+* __Demographics__
+  + Deprivation
+  + Age Profiles
+  + Ethnicity Profiles
+* __Health Outcomes__
+  + Disease Prevalence
+  + Mortality Rates
+  + Life Expectancy
+  + Drug and Alcohol Usage
+* __Socioeconomic Measures__
+  + Employment Rates
+  + Sickness Absence
+
+
+## Deprivation {.tabset .tabset-fade}
+***
+
+The *Index of Multiple Deprivation (IMD)* is the official measure of relative deprivation for small areas across England. Each Lower Super Output Area (LSOA) across England is ranked using the IMD and assigned to a decile. Decile 1 represents the the most deprived with 10 being the most affluent (or least deprived). This index is constructed from seven domains to produce an overall relative score:
+
+* Income Deprivation
+* Employment Deprivation
+* Education, Skills and Training Deprivation
+* Health Deprivation and Disability
+* Crime
+* Barriers to Housing and Services
+* Living Environment Deprivation
+
+More information on the IMD can be found [here](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+
+The data that is contained within the following tabs is based on the 2019 calculation which is currently the latest available.
+
+### Deprivation Map
+The map below shows the LSOAs within the ICB and their IMD decile. The darker the colour, the more deprived the area.
+
+```{r Dep Map, out.width='100%'}
+
+dep_map_icb(params$icb)
+
+```
+
+
+### Deprivation Deciles
+The chart below shows the percentage of LSOAs within `r icb_name` that reside in each deprivation decile. A reference line of 10% is overlaid to help identify whether the ICB has a higher percentage of LSOAs within more deprived or more affluent areas.
+
+
+```{r Dep Deciles, out.width='100%'}
+
+dep_deciles_plot(params$icb)
+
+```
+
+### Deprivation Domains
+As discussed above, the IMD is a composite measure of deprivation based on seven domains. The plot below shows the percentage  of LSOAs within `r icb_name` that belong to each deprivation decile for the seven domains. This provides greater insight into the issues driving deprivation across the system.
+
+```{r Dep Deciles Domains, out.width='100%'}
+
+dep_domain_deciles(params$icb)
+
+```
+
+
+
+### Metadata
+The data used to construct the visualisations within this section was sourced from [here](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+
