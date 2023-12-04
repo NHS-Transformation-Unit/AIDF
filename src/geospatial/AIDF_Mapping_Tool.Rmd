@@ -9,8 +9,6 @@ output:
     toc_float: true
     toc_collapsed: true
     css: ../config/nhs_tu_theme.css
-params:
-  icb: QE1
 ---
 
 
@@ -19,15 +17,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../geospatial/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
-source("../geospatial/r_scripts/deprivation.R")
-source("../geospatial/r_scripts/external_read.R")
-
-icb_name <- as.data.frame(lsoa_lookup) %>%
-  filter(ICB22CDH == params$icb) %>%
-  group_by(ICB22NM) %>%
-  summarise()
-
-icb_name <- icb_name[[1,1]]
+source("../geospatial/r_scripts/geospatial.R")
 
 ```
 
@@ -73,11 +63,8 @@ There are plans to include data relating to the AI supplier/product in future it
 ### AIDF Member Map
 The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
 
-
-```{r Dep Map, out.width='100%'}
-
-dep_map_icb(params$icb)
-
+```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center'}
+AIDF_Map
 ```
 
 The data that is contained within the current tool is accurate as of 04/12/2023.
