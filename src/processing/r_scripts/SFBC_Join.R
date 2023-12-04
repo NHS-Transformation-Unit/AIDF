@@ -32,3 +32,9 @@ AIDF_Ref_Proc <- AIDF_Ref_Proc %>%
 AIDF_Expanded <- left_join(AIDF_Proc, AIDF_Ref_Proc, by = "SFBC_ID")
 
 AIDF_Geo_Final <- left_join(AIDF_Expanded, NHS_Trust_Lookup, by = "Org code")
+
+# Changing the geospatial fields to numerical
+
+AIDF_Geo_Final <- AIDF_Geo_Final %>%
+  mutate(Latitude_1m = as.numeric(Latitude_1m),
+         Longitude_1m = as.numeric(Longitude_1m))
