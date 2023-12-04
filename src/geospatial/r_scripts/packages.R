@@ -5,7 +5,8 @@ packages <- c("here",
               "sf",
               "plotly",
               "readxl",
-              "htmltools")
+              "htmltools",
+              "shiny")
 
 
 lapply(packages, library, character.only=TRUE)

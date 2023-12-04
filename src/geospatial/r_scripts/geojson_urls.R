@@ -1,5 +1,3 @@
-geojson_lsoa_url <-"https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
 geojson_la_url <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_May_2023_UK_BGC_V2/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
-geojson_subicb_url <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Sub_Integrated_Care_Board_Locations_April_2023_EN_BGC/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
 geojson_icb_url <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Integrated_Care_Boards_April_2023_EN_BGC/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
-geojson_lsoa_lookup_url <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA11_SICBL22_ICB22_LAD22_EN_LU/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
+geojson_region <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/ArcGIS/rest/services/NHS_England_Regions_July_2022_EN_BGC_2022/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
