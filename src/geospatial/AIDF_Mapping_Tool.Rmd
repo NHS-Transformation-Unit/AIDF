@@ -1,5 +1,5 @@
 ---
-title: "AIDF Network Mapping"
+title: "AI Diagnostic Fund Network Mapping"
 author: "NHS Transformation Unit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
@@ -44,43 +44,34 @@ htmltools::img(src = knitr::image_uri(paste0(here(), "/images/TU_logo_large.png"
 ## Introduction
 ***
 
-This pack provides an overview of key demographic, health and socioeconomic metrics for **`r icb_name`**. Where available this data will be available to the lowest level of geography and will show how the ICB compares to the rest of England and how these metrics have changed over time.
+The AI Diagnostic Fund (AIDF) will provide funding to accelerate the deployment of the most promising AI imaging and decision support tools to help diagnose patients more quickly.
 
-The metrics within this pack relate to:
+£21 million will be provided to 11 imaging networks, covering 64 NHS trusts across England, to speed up the roll out of AI diagnostic tools.
 
-* __Demographics__
-  + Deprivation
-  + Age Profiles
-  + Ethnicity Profiles
-* __Health Outcomes__
-  + Disease Prevalence
-  + Mortality Rates
-  + Life Expectancy
-  + Drug and Alcohol Usage
-* __Socioeconomic Measures__
-  + Employment Rates
-  + Sickness Absence
+The AI Diagnostic Fund will prioritise certain technologies, such as tools that can support clinicians to analyse chest X-Rays - the most common tool used to assist a diagnosis for lung cancer - which is the leading cause of cancer death in the UK. With more than 600,000 chest X-rays performed each month in England, the deployment of diagnostic AI tools will potentially assist clinicians in diagnosing cancer earlier, which will improve patient outcomes.
+
+More information on the AIDF can be found [here](https://transform.england.nhs.uk/ai-lab/ai-lab-programmes/ai-in-imaging/ai-diagnostic-fund/).
+
+This mapping tool has been developed by the NHS Transformation Unit to provide business intelligence support to the AIDF by presenting AI data, monitoring progress, and provide data insights.
 
 
-## Deprivation {.tabset .tabset-fade}
+## AIDF Mapping {.tabset .tabset-fade}
 ***
 
-The *Index of Multiple Deprivation (IMD)* is the official measure of relative deprivation for small areas across England. Each Lower Super Output Area (LSOA) across England is ranked using the IMD and assigned to a decile. Decile 1 represents the the most deprived with 10 being the most affluent (or least deprived). This index is constructed from seven domains to produce an overall relative score:
+This mapping tool presents data on the following information related to each participating Trust:
 
-* Income Deprivation
-* Employment Deprivation
-* Education, Skills and Training Deprivation
-* Health Deprivation and Disability
-* Crime
-* Barriers to Housing and Services
-* Living Environment Deprivation
+* Trust
+* Imaging Network
+* NHS Region
+* Modality
+* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
 
-More information on the IMD can be found [here](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+There are plans to include data relating to the AI supplier/product in future iterations of this tool.
 
-The data that is contained within the following tabs is based on the 2019 calculation which is currently the latest available.
 
-### Deprivation Map
-The map below shows the LSOAs within the ICB and their IMD decile. The darker the colour, the more deprived the area.
+### AIDF Member Map
+The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
+
 
 ```{r Dep Map, out.width='100%'}
 
@@ -88,28 +79,8 @@ dep_map_icb(params$icb)
 
 ```
 
-
-### Deprivation Deciles
-The chart below shows the percentage of LSOAs within `r icb_name` that reside in each deprivation decile. A reference line of 10% is overlaid to help identify whether the ICB has a higher percentage of LSOAs within more deprived or more affluent areas.
-
-
-```{r Dep Deciles, out.width='100%'}
-
-dep_deciles_plot(params$icb)
-
-```
-
-### Deprivation Domains
-As discussed above, the IMD is a composite measure of deprivation based on seven domains. The plot below shows the percentage  of LSOAs within `r icb_name` that belong to each deprivation decile for the seven domains. This provides greater insight into the issues driving deprivation across the system.
-
-```{r Dep Deciles Domains, out.width='100%'}
-
-dep_domain_deciles(params$icb)
-
-```
-
-
+The data that is contained within the current tool is accurate as of 04/12/2023.
 
 ### Metadata
-The data used to construct the visualisations within this section was sourced from [here](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
