@@ -16,7 +16,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../geospatial/r_scripts/packages.R")
-source("C:/Users/elliot.royle/OneDrive - Midlands and Lancashire CSU/Git/AIDF/src/processing/r_scripts/SFBC_Pipeline.R")
+source("../processing/r_scripts/SFBC_Pipeline.R")
 source("../geospatial/r_scripts/geojson_urls.R")
 source("../geospatial/r_scripts/geojson.R")
 source("../geospatial/r_scripts/geospatial.R")
