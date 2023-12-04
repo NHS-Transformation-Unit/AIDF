@@ -64,6 +64,7 @@ This mapping tool presents data on the following information related to each par
 * Imaging Network
 * NHS Region
 * Modality
+* Body Part
 * Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
 
 There are plans to include data relating to the AI supplier/product in future iterations of this tool.
