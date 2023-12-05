@@ -52,7 +52,8 @@ AIDF_Map <- AIDF_Map %>%
       "Modality: ", Modality, "<br>",
       "Body Part: ", `Body_Part`, "<br>",
       "Implementation End Date: ", `Net_Implementation_End`),
-    group = "Network Name 1"  # Group for layer control
+    group = "Network Name 1",  # Group for layer control
+    options = popupOptions(zIndex = 1000)
   )
 
 ## Print the map
