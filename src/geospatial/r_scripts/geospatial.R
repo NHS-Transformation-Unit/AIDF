@@ -2,37 +2,30 @@
 
 ## Create a color palette or choose one from RColorBrewer
 color_palette <- colorFactor(
-  palette = "Set2",  # You can choose a different palette
+  palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
   domain = AIDF_Geo_Final$`Network Name 1`
 )
 
 ## Create a leaflet map
 AIDF_Map <- leaflet() %>%
-  addTiles()  # Add default map tiles
+  addProviderTiles("Stadia.AlidadeSmooth")
 
 ## Add layers for each geojson file
 AIDF_Map <- AIDF_Map %>%
-  addPolygons(
-    data = geojson_icb,
-    fillColor = "green",
-    fillOpacity = 0.4,
-    color = "white",
-    weight = 1,
-    group = "ICB"  # Group for layer control
-  ) %>%
-  addPolygons(
+   addPolygons(
     data = geojson_regions,
     fillColor = "lightblue",
-    fillOpacity = 0.4,
-    color = "white",
-    weight = 1,
+    fillOpacity = 0,
+    color = "rgba(46, 139, 87, 0.5)",
+    weight = 1.25,
+    stroke = TRUE,
     group = "Regions"  # Group for layer control
   )
 
 ## Add layer control
 AIDF_Map <- AIDF_Map %>%
   addLayersControl(
-    overlayGroups = c("ICB", "Regions"),  # Groups defined above
+    overlayGroups = c("Regions"),  # Groups defined above
     options = layersControlOptions(collapsed = FALSE)
   )
 

@@ -16,7 +16,6 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../geospatial/r_scripts/packages.R")
-#source("../processing/r_scripts/SFBC_Pipeline.R")
 source("../processing/r_scripts/SFBC_Packages.R")
 source("../processing/r_scripts/SFBC_Load.R")
 source("../processing/r_scripts/SFBC_ETL.R")
@@ -70,7 +69,7 @@ There are plans to include data relating to the AI supplier/product in future it
 ### AIDF Member Map
 The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
 
-```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center'}
+```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center', out.width='100%'}
 AIDF_Map
 ```
 
