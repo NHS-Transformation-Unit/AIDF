@@ -3,12 +3,11 @@
 ## Creating the colour palette
 color_palette <- colorFactor(
   palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
-  domain = AIDF_Geo_Final$`Network Name 1`
-)
+  domain = AIDF_Geo_Final$`Network Name 1`)
 
 ## Creating the base leaflet map
 AIDF_Map <- leaflet() %>%
-  addProviderTiles("Stadia.AlidadeSmooth")
+  addProviderTiles("CartoDB.Positron")
 
 ## Adding layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
@@ -19,15 +18,13 @@ AIDF_Map <- AIDF_Map %>%
     color = "rgba(46, 139, 87, 0.5)",
     weight = 1.25,
     stroke = TRUE,
-    group = "Regions"
-  )
+    group = "Regions")
 
 ## Adding layer control
 AIDF_Map <- AIDF_Map %>%
   addLayersControl(
     overlayGroups = c("Regions"),  # Groups defined above
-    options = layersControlOptions(collapsed = FALSE)
-  )
+    options = layersControlOptions(collapsed = FALSE))
 
 ## Plotting NHS Trust sites
 AIDF_Map <- AIDF_Map %>%
@@ -44,10 +41,18 @@ AIDF_Map <- AIDF_Map %>%
       "Region: ", Region, "<br>",
       "Modality: ", Modality, "<br>",
       "Body Part: ", `Body_Part`, "<br>",
-      "Implementation End Date: ", `Net_Implementation_End`),
+      "Implementation End Date: ", `Net_Implementation_End`
+    ),
     group = "Network Name 1",
-    options = popupOptions(zIndex = 1000)
-  )
+    options = popupOptions(zIndex = 1000))
+
+## Adding a simple legend
+#AIDF_Map <- AIDF_Map %>%
+#  addLegend(
+ #   position = "bottomright",
+ #   colors = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
+  #  labels = unique(AIDF_Geo_Final$`Network Name 1`),
+   # title = "Networks")
 
 ## Testing the map
 print(AIDF_Map)
