@@ -1,16 +1,16 @@
 # AIDF Map ---------------------------------------------------------
 
-## Create a color palette or choose one from RColorBrewer
+## Creating the colour palette
 color_palette <- colorFactor(
   palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
   domain = AIDF_Geo_Final$`Network Name 1`
 )
 
-## Create a leaflet map
+## Creating the base leaflet map
 AIDF_Map <- leaflet() %>%
   addProviderTiles("Stadia.AlidadeSmooth")
 
-## Add layers for each geojson file
+## Adding layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
    addPolygons(
     data = geojson_regions,
@@ -19,24 +19,24 @@ AIDF_Map <- AIDF_Map %>%
     color = "rgba(46, 139, 87, 0.5)",
     weight = 1.25,
     stroke = TRUE,
-    group = "Regions"  # Group for layer control
+    group = "Regions"
   )
 
-## Add layer control
+## Adding layer control
 AIDF_Map <- AIDF_Map %>%
   addLayersControl(
     overlayGroups = c("Regions"),  # Groups defined above
     options = layersControlOptions(collapsed = FALSE)
   )
 
-## Plot NHS Trust sites
+## Plotting NHS Trust sites
 AIDF_Map <- AIDF_Map %>%
   addCircleMarkers(
     data = AIDF_Geo_Final,
     lat = ~Latitude_1m,
     lng = ~Longitude_1m,
-    radius = 5,  # Adjust the radius as needed
-    color = ~color_palette(`Network Name 1`), # Color based on Imaging Network 1
+    radius = 5,
+    color = ~color_palette(`Network Name 1`),
     fillOpacity = 0.8,
     popup = ~paste(
       "Trust: ", Trust, "<br>",
@@ -45,9 +45,9 @@ AIDF_Map <- AIDF_Map %>%
       "Modality: ", Modality, "<br>",
       "Body Part: ", `Body_Part`, "<br>",
       "Implementation End Date: ", `Net_Implementation_End`),
-    group = "Network Name 1",  # Group for layer control
+    group = "Network Name 1",
     options = popupOptions(zIndex = 1000)
   )
 
-## Print the map
+## Testing the map
 print(AIDF_Map)
