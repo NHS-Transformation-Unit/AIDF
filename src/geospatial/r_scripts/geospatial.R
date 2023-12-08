@@ -49,10 +49,10 @@ AIDF_Map <- AIDF_Map %>%
 ## Adding a simple legend
 #AIDF_Map <- AIDF_Map %>%
 #  addLegend(
- #   position = "bottomright",
- #   colors = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
-  #  labels = unique(AIDF_Geo_Final$`Network Name 1`),
-   # title = "Networks")
+#    position = "bottomright",
+#    colors = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
+#    labels = unique(AIDF_Geo_Final$`Network Name 1`),
+#    title = "Networks")
 
 ## Testing the map
 print(AIDF_Map)
