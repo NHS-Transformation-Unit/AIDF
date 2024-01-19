@@ -1,5 +1,19 @@
 # AIDF Map ---------------------------------------------------------
 
+install.packages("leaflet")
+install.packages("readxl")
+install.packages("dplyr")
+library(leaflet)
+library(readxl)
+library(dplyr)
+
+## Merging the shapefile and colour data into one source
+
+OHID_Lookup_Path <- (paste0(here(),"/data/Geospatial/trust_msoa_lookup.xlsx"))
+OHID_Lookup <- read_xlsx(OHID_Lookup_Path)
+
+AIDF_Geo_Join <- left_join(OHID_Lookup, AIDF_Geo_Final, by = c("TrustCode" = "Org code"))
+
 ## Creating the colour palette
 color_palette <- colorFactor(
   palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
@@ -12,18 +26,18 @@ AIDF_Map <- leaflet() %>%
 ## Adding layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
    addPolygons(
-    data = geojson_regions,
+    data = OHID_msoa_shp,
     fillColor = "lightblue",
-    fillOpacity = 0,
+    fillOpacity = 0.25,
     color = "rgba(46, 139, 87, 0.5)",
     weight = 1.25,
     stroke = TRUE,
-    group = "Regions")
+    group = "Providers")
 
 ## Adding layer control
 AIDF_Map <- AIDF_Map %>%
   addLayersControl(
-    overlayGroups = c("Regions"),  # Groups defined above
+    overlayGroups = c("Providers"),  # Groups defined above
     options = layersControlOptions(collapsed = FALSE))
 
 ## Plotting NHS Trust sites
@@ -45,14 +59,6 @@ AIDF_Map <- AIDF_Map %>%
     ),
     group = "Network Name 1",
     options = popupOptions(zIndex = 1000))
-
-## Adding a simple legend
-#AIDF_Map <- AIDF_Map %>%
-#  addLegend(
-#    position = "bottomright",
-#    colors = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
-#    labels = unique(AIDF_Geo_Final$`Network Name 1`),
-#    title = "Networks")
 
 ## Testing the map
 print(AIDF_Map)

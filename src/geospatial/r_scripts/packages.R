@@ -1,3 +1,14 @@
+install.packages("here")
+install.packages("tidyverse")
+install.packages("leaflet")
+install.packages("openxlsx")
+install.packages("sf")
+install.packages("plotly")
+install.packages("readxl")
+install.packages("htmltools")
+install.packages("shiny")
+install.packages("readxl")
+
 packages <- c("here",
               "tidyverse",
               "leaflet",
@@ -6,7 +17,7 @@ packages <- c("here",
               "plotly",
               "readxl",
               "htmltools",
-              "shiny")
-
+              "shiny",
+              "readxl")
 
 lapply(packages, library, character.only=TRUE)
