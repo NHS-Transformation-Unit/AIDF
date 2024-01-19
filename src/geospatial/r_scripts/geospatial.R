@@ -1,11 +1,5 @@
 # AIDF Map ---------------------------------------------------------
 
-install.packages("leaflet")
-install.packages("readxl")
-install.packages("dplyr")
-library(leaflet)
-library(readxl)
-library(dplyr)
 
 ## Merging the constituent data into one source
 
@@ -35,15 +29,15 @@ color_palette <- colorFactor(
   domain = AIDF_Geo_LNl$`Network Name 1`)
 
 ## Creating the base leaflet map
-AIDF_Map <- leaflet() %>%
-  addProviderTiles("CartoDB.Positron")
+AIDF_Map <- leaflet() #%>%
+  #addProviderTiles("CartoDB.Positron")
 
 ## Adding non-live provider layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
    addPolygons(
     data = OHID_shp_NL,
     fillColor = "lightblue",
-    fillOpacity = 0.25,
+    fillOpacity = 0.1,
     color = "rgba(46, 139, 87, 0.5)",
     weight = 1.25,
     stroke = TRUE,
@@ -59,28 +53,11 @@ AIDF_Map <- AIDF_Map %>%
 AIDF_Map <- AIDF_Map %>%
   addPolygons(
     data = OHID_shp_L,
-    fillColor = "red",
-    fillOpacity = 0.25,
-    color = "rgba(46, 139, 87, 0.5)",
+    color = ~color_palette(`Network Name 1`),
+    opacity = 0.8,
     weight = 1.25,
     stroke = TRUE,
-    group = "L Providers")
-
-## Adding layer control
-AIDF_Map <- AIDF_Map %>%
-  addLayersControl(
-    overlayGroups = c("L Providers"),  # Groups defined above
-    options = layersControlOptions(collapsed = FALSE))
-
-## Plotting NHS Trust sites
-AIDF_Map <- AIDF_Map %>%
-  addCircleMarkers(
-    data = AIDF_Geo_Final,
-    lat = ~Latitude_1m,
-    lng = ~Longitude_1m,
-    radius = 5,
-    color = ~color_palette(`Network Name 1`),
-    fillOpacity = 0.8,
+    group = "L Providers",
     popup = ~paste(
       "Trust: ", Trust, "<br>",
       "Network Name: ", `Network Name 1`, "<br>",
@@ -88,9 +65,14 @@ AIDF_Map <- AIDF_Map %>%
       "Modality: ", Modality, "<br>",
       "Body Part: ", `Body_Part`, "<br>",
       "Implementation End Date: ", `Net_Implementation_End`
-    ),
-    group = "Network Name 1",
-    options = popupOptions(zIndex = 1000))
+    )
+  )
+
+## Adding layer control
+AIDF_Map <- AIDF_Map %>%
+  addLayersControl(
+    overlayGroups = c("L Providers"),  # Groups defined above
+    options = layersControlOptions(collapsed = FALSE))
 
 ## Testing the map
 print(AIDF_Map)
