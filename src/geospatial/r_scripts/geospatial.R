@@ -29,8 +29,11 @@ color_palette <- colorFactor(
   domain = AIDF_Geo_LNl$`Network Name 1`)
 
 ## Creating the base leaflet map
-AIDF_Map <- leaflet() #%>%
-  #addProviderTiles("CartoDB.Positron")
+
+#AIDF_Map <- leaflet(options = leafletOptions(backgroundColor = "#ffffff"))
+
+AIDF_Map <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron")
 
 ## Adding non-live provider layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
