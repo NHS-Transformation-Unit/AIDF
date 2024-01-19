@@ -1,9 +1,3 @@
-install.packages("here")
-install.packages("sf")
-
-library(here)
-library(sf)
-
 OHID_msoa_shp <- (paste0(here(),"/data/Geospatial/MSOA Shapefile/FPTP_AllAd22_Gen.shp"))
 OHID_msoa_shp <- st_read(OHID_msoa_shp)
 
