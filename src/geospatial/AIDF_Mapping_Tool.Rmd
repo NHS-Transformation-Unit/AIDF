@@ -70,6 +70,8 @@ There are plans to include data relating to the AI supplier/product in future it
 The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
 
 ```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center', out.width='100%'}
+AIDF_Map <- AIDF_Map %>%
+  setView(lng = -2.2426, lat = 53.4808, zoom = 6)  # Adjust these coordinates and zoom level
 AIDF_Map
 ```
 
