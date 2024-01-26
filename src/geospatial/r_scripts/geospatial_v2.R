@@ -1,4 +1,4 @@
-# AIDF Map 1 ---------------------------------------------------------
+# AIDF Map 2 (X-Ray) ---------------------------------------------------------
 
 ## Merging the constituent data into one source
 
@@ -16,11 +16,11 @@ OHID_merge <- left_join(OHID_msoa_shp, AIDF_Geo_LNl, by = c("TrustCd" = "TrustCo
 
 # Filtering the shape files based on the value in `Status`
 
-OHID_shp_NL <- OHID_merge %>%
-  filter(Status == "Not Live")
+OHID_XRay <- OHID_merge %>%
+  filter(Modality == "X-ray")
 
-OHID_shp_L <- OHID_merge %>%
-  filter(Status == "Live")
+OHID_CT <- OHID_merge %>%
+  filter(Modality == "CT Scan")
 
 ## Creating the colour palette
 color_palette <- colorFactor(
@@ -29,9 +29,9 @@ color_palette <- colorFactor(
 
 ## Creating the base leaflet map
 
-AIDF_Map <- leaflet()
+AIDF_Map_2 <- leaflet()
 
-AIDF_Map <- AIDF_Map %>%
+AIDF_Map_2 <- AIDF_Map_2 %>%
   addTiles(urlTemplate = "") %>%
   htmlwidgets::onRender("
     function(el, x) {
@@ -40,9 +40,9 @@ AIDF_Map <- AIDF_Map %>%
   ")
 
 ## Adding non-live provider layers for the NHS region geojson file
-AIDF_Map <- AIDF_Map %>%
+AIDF_Map_2 <- AIDF_Map_2 %>%
   addPolygons(
-    data = OHID_shp_NL,
+    data = OHID_merge,
     fillColor = "lightgrey",
     fillOpacity = 0.05,
     color = "rgba(46, 139, 87, 0.5)",
@@ -50,21 +50,34 @@ AIDF_Map <- AIDF_Map %>%
     stroke = TRUE,
     group = "NL Providers")
 
-## Adding layer control
-AIDF_Map <- AIDF_Map %>%
-  addLayersControl(
-    overlayGroups = c("NL Providers"),  # Groups defined above
-    options = layersControlOptions(collapsed = FALSE))
-
 ## Adding live provider layers for the NHS region geojson file
-AIDF_Map <- AIDF_Map %>%
+AIDF_Map_2 <- AIDF_Map_2 %>%
   addPolygons(
-    data = OHID_shp_L,
-    color = ~color_palette(`Network Name 1`),
+    data = OHID_XRay,
+    color = "red",
     opacity = 0.8,
     weight = 1.25,
     stroke = TRUE,
-    group = "Live Providers",
+    group = "X-Ray",
+    popup = ~paste(
+      "Trust: ", Trust, "<br>",
+      "Network Name: ", `Network Name 1`, "<br>",
+      "Region: ", Region, "<br>",
+      "Modality: ", Modality, "<br>",
+      "Body Part: ", `Body_Part`, "<br>",
+      "Implementation End Date: ", `Net_Implementation_End`
+    )
+  )
+
+## Adding live provider layers for the NHS region geojson file
+AIDF_Map_2 <- AIDF_Map_2 %>%
+  addPolygons(
+    data = OHID_CT,
+    color = "blue",
+    opacity = 0.8,
+    weight = 1.25,
+    stroke = TRUE,
+    group = "CT Scan",
     popup = ~paste(
       "Trust: ", Trust, "<br>",
       "Network Name: ", `Network Name 1`, "<br>",
@@ -76,10 +89,10 @@ AIDF_Map <- AIDF_Map %>%
   )
 
 ## Adding layer control
-AIDF_Map <- AIDF_Map %>%
+AIDF_Map_2 <- AIDF_Map_2 %>%
   addLayersControl(
-    overlayGroups = c("Live Providers"),  # Groups defined above
+    overlayGroups = c("X-Ray", "CT Scan"),  # Groups defined above
     options = layersControlOptions(collapsed = FALSE))
 
 ## Testing the map
-print(AIDF_Map)
+print(AIDF_Map_2)

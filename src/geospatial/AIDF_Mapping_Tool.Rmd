@@ -24,6 +24,8 @@ source("../processing/r_scripts/SFBC_Join.R")
 source("../geospatial/r_scripts/geojson_urls.R")
 source("../geospatial/r_scripts/geojson.R")
 source("../geospatial/r_scripts/geospatial.R")
+source("../geospatial/r_scripts/geospatial_v2.R")
+source("../geospatial/r_scripts/geospatial_old.R")
 
 ```
 
@@ -66,13 +68,29 @@ This mapping tool presents data on the following information related to each par
 There are plans to include data relating to the AI supplier/product in future iterations of this tool.
 
 
-### AIDF Member Map
+### AIDF Member Map (Old)
+The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
+
+```{r map_output_3, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center', out.width='100%'}
+AIDF_Map_Old
+```
+
+The data that is contained within the current tool is accurate as of 04/12/2023.
+
+### AIDF Member Map 1
 The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
 
 ```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center', out.width='100%'}
-AIDF_Map <- AIDF_Map %>%
-  setView(lng = -2.2426, lat = 53.4808, zoom = 6)  # Adjust these coordinates and zoom level
 AIDF_Map
+```
+
+The data that is contained within the current tool is accurate as of 04/12/2023.
+
+### AIDF Member Map 2
+The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds the modality of the investigations taking place. Red boundaries relate to X-Ray and blue relate to CT Scans.
+
+```{r map_output_2, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center', out.width='100%'}
+AIDF_Map_2
 ```
 
 The data that is contained within the current tool is accurate as of 04/12/2023.
