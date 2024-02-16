@@ -26,7 +26,7 @@ target_sheets <- all_sheet_names_df_long %>%
   filter(!Sheet_Name %in% c("Front Sheet", "dropdowns", "Master Sheet",
                             "AI Supplier Cost Detail", "GM Activity & Perfromance",
                             "apportioned costs and benefits", "Year by Year - Trusts", 
-                            "Saving calculation methodology"))
+                            "Saving calculation methodology", "GC workings"))
 
 read_sheets_and_bind <- function(folder_path, sheets_to_read, range) {
   

@@ -36,6 +36,9 @@ SE2_df <- AIDF_df %>%
 SW1_df <- AIDF_df %>%
   filter(`SFBC_ID` == "SW1_SFBC")
 
+YIC_df <- AIDF_df %>%
+  filter(`SFBC_ID` == "YIC2_SFBC")
+
 # Cleaning C&M
 
 CM_Row <- 8
