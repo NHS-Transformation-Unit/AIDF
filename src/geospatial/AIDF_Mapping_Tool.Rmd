@@ -15,7 +15,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
-source("../geospatial/r_scripts/packages.R")
+source("../config/r_scripts/packages.R")
 source("../processing/r_scripts/SFBC_Packages.R")
 source("../processing/r_scripts/SFBC_Load.R")
 source("../processing/r_scripts/SFBC_ETL.R")
