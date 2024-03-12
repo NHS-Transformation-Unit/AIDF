@@ -22,6 +22,12 @@ OHID_shp_NL <- OHID_merge %>%
 OHID_shp_L <- OHID_merge %>%
   filter(Status == "Live")
 
+#Formatting the date fields correctly for use in R shiny app
+
+OHID_shp_dates <- OHID_shp_L %>%
+  mutate(Net_Implementation_Start = as.Date(Net_Implementation_Start, format = "%d/%m/%Y"),
+         Net_Implementation_End = as.Date(Net_Implementation_End, format = "%d/%m/%Y"))
+
 ## Creating the colour palette
 color_palette <- colorFactor(
   palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),

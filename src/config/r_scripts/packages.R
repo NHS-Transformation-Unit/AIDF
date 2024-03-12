@@ -13,6 +13,7 @@ packages <- c("here",
               "htmltools",
               "shiny",
               "readxl",
-              "dplyr")
+              "dplyr", 
+              "shiny")
 
 lapply(packages, library, character.only=TRUE)

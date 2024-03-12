@@ -7,10 +7,10 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       dateRangeInput("date_range", "Select Date Range:",
-                     start = min(AIDF_Geo_Final$Implementation_End_Date),
-                     end = max(AIDF_Geo_Final$Implementation_End_Date),
-                     min = min(AIDF_Geo_Final$Implementation_End_Date),
-                     max = max(AIDF_Geo_Final$Implementation_End_Date)),
+                     start = min(AIDF_Geo_LNl$Net_Implementation_End),
+                     end = max(AIDF_Geo_LNl$Net_Implementation_End),
+                     min = min(AIDF_Geo_LNl$Net_Implementation_End),
+                     max = max(AIDF_Geo_LNl$Net_Implementation_End)),
       hr(),
       p("This mapping tool allows you to filter AIDF provider data based on Implementation End Date."),
       p("Adjust the date range using the slider to update the map."),
