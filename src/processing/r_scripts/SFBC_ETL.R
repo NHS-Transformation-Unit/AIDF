@@ -1,6 +1,5 @@
 # Script for the ETL of SFBC data files
 
-
 result <- result %>% mutate(SFBC_ID = str_split_fixed(FileName, "\\.", 2)[, 1])
 
 result_wide <- pivot_wider(

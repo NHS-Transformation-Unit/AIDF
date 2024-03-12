@@ -196,4 +196,5 @@ AIDF_Proc <- bind_rows(list(E1_df = E1_df,
                             NWGM_df = NWGM_df,
                             NWL1_df = NWL1_df,
                             SE2_df = SE2_df,
-                            SW1_df = SW1_df))
+                            SW1_df = SW1_df, 
+                            YIC_df = YIC_df))

@@ -31,7 +31,7 @@ OHID_shp_dates <- OHID_shp_L %>%
 ## Creating the colour palette
 color_palette <- colorFactor(
   palette = c("#b15928", "#1f78b4", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d"),
-  domain = AIDF_Geo_LNl$`Network Name 1`)
+  domain = OHID_shp_dates$`Network Name 1`)
 
 ## Creating the base leaflet map
 
@@ -48,7 +48,7 @@ AIDF_Map <- AIDF_Map %>%
 ## Adding non-live provider layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
   addPolygons(
-    data = OHID_shp_NL,
+    data = OHID_merge,
     fillColor = "lightgrey",
     fillOpacity = 0.05,
     color = "rgba(46, 139, 87, 0.5)",
@@ -65,7 +65,7 @@ AIDF_Map <- AIDF_Map %>%
 ## Adding live provider layers for the NHS region geojson file
 AIDF_Map <- AIDF_Map %>%
   addPolygons(
-    data = OHID_shp_L,
+    data = OHID_shp_dates,
     color = ~color_palette(`Network Name 1`),
     opacity = 0.8,
     weight = 1.25,
