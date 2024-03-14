@@ -1,23 +1,19 @@
 # Define UI
 ui <- fluidPage(
-  tags$style(
-    HTML("
-      .container {
-        width: 100%; /* Adjust width as needed */
-        margin: 0 auto; /* Center horizontally */
-        text-align: center; /* Center-align content */
-      }
-    ")
-  ),
-  div(class = "container",
-      leafletOutput("map", height = "600px"),  # Set the height here, for example, to 600 pixels
-      sliderInput("date_range", "Select Implementation End Date Range:",
-                  min = min(OHID_shp_dates$Net_Implementation_End),
-                  max = max(OHID_shp_dates$Net_Implementation_End),
-                  value = c(min(OHID_shp_dates$Net_Implementation_End), max(OHID_shp_dates$Net_Implementation_End)),
-                  step = 1,
-                  animate = TRUE,
-                  timeFormat = "%Y-%m-%d")
+  tags$style(HTML(".irs-from {display: none;}")),  # Hide label for minimum value
+  leafletOutput("map", height = "600px"),  # Set the height here, for example, to 600 pixels
+  
+  # Add slider input with custom CSS style
+  div(
+    style = "width: 100%;",  # Set the width to 100% of the parent container
+    sliderInput("date_range", "Select Implementation Date:",
+                min = min(OHID_shp_dates$Net_Implementation_End),
+                max = max(OHID_shp_dates$Net_Implementation_End),
+                value = c(min(OHID_shp_dates$Net_Implementation_End), max(OHID_shp_dates$Net_Implementation_End)),
+                step = 1,
+                animate = FALSE,
+                width = "800px",
+                timeFormat = "%Y-%m-%d")
   )
 )
 

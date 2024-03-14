@@ -7,7 +7,8 @@ ui <- fluidPage(
               max = max(OHID_shp_dates$Net_Implementation_End),
               value = c(min(OHID_shp_dates$Net_Implementation_End), max(OHID_shp_dates$Net_Implementation_End)),
               step = 1,
-              animate = TRUE,
+              animate = FALSE,
+              width = "775px",
               timeFormat = "%Y-%m-%d")  # Set disable to TRUE for the minimum value
 )
 
