@@ -62,18 +62,19 @@ There are plans to include data relating to the AI supplier/product in future it
 
 
 ### AIDF Member Map 1
-The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network.
+The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network. 
 
+Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to see the uptake of AI diagnostic tools across the UK.
 
 ```{r}
 library(shiny)
 shinyAppDir(
-  "../geospatial/r_scripts/",
+  "../geospatial/r_scripts/Implementation/",
   options = list(width = "100%", height = "700px")
 )
 ```
 
-The data that is contained within the current tool is accurate as of 04/12/2023.
+The data that is contained within the current tool is accurate as of 2024-03-14.
 
 ### Metadata
 Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
