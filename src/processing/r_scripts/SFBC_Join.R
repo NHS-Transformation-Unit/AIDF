@@ -38,3 +38,7 @@ AIDF_Geo_Final <- left_join(AIDF_Expanded, NHS_Trust_Lookup, by = "Org code")
 AIDF_Geo_Final <- AIDF_Geo_Final %>%
   mutate(Latitude_1m = as.numeric(Latitude_1m),
          Longitude_1m = as.numeric(Longitude_1m))
+
+# Writing the final AIDF Geo file output
+
+write.csv(AIDF_Geo_Final, paste0(here(),"/data/Processed SFBC/AIDF_Geo_Final.csv"))
