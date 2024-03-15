@@ -1,5 +1,7 @@
 # Define UI
 ui <- fluidPage(
+  uiOutput("leaflet_output"),
+  
   selectInput("map_select", "Select Imaging Network:",
               choices = c("Norfolk, Suffolk & North Essex", 
                           "Herts West Essex, Bedford Luton and Mid and South Essex systems", 
@@ -12,10 +14,8 @@ ui <- fluidPage(
                           "North West London", 
                           "Surrey, Sussex and Frimley Imaging Network",
                           "PENRAD",
-                          "YIC")),
+                          "YIC"))
   
-  # Placeholder for leaflet output
-  uiOutput("leaflet_output")
 )
 
 # Define server logic
@@ -42,6 +42,9 @@ server <- function(input, output, session) {
   # Define E1_Map leaflet output
   output$E1_Geo <- renderLeaflet({
     E1_Map <- leaflet()
+    
+    E1_Map <- E1_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     # Add provider boundary polygons
     E1_Map <- E1_Map %>%
@@ -88,6 +91,9 @@ server <- function(input, output, session) {
   # Define E2_Map leaflet output
   output$E2_Geo <- renderLeaflet({
     E2_Map <- leaflet()
+    
+    E2_Map <- E2_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     E2_Map <- E2_Map %>%
       addTiles(urlTemplate = "") %>%
@@ -142,6 +148,9 @@ server <- function(input, output, session) {
     EM1_Map <- leaflet()
     
     EM1_Map <- EM1_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    EM1_Map <- EM1_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
     function(el, x) {
@@ -192,6 +201,9 @@ server <- function(input, output, session) {
   # Define HNY_Map leaflet output
   output$HNY_Geo <- renderLeaflet({
     HNY_Map <- leaflet()
+    
+    HNY_Map <- HNY_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     HNY_Map <- HNY_Map %>%
       addTiles(urlTemplate = "") %>%
@@ -246,6 +258,9 @@ server <- function(input, output, session) {
     NEL1_Map <- leaflet()
     
     NEL1_Map <- NEL1_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    NEL1_Map <- NEL1_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
     function(el, x) {
@@ -296,6 +311,9 @@ server <- function(input, output, session) {
   # Define NENC_Geo leaflet output
   output$NENC_Geo <- renderLeaflet({
     NENC_Map <- leaflet()
+    
+    NENC_Map <- NENC_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     NENC_Map <- NENC_Map %>%
       addTiles(urlTemplate = "") %>%
@@ -350,6 +368,9 @@ server <- function(input, output, session) {
     NWGM_Map <- leaflet()
     
     NWGM_Map <- NWGM_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    NWGM_Map <- NWGM_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
     function(el, x) {
@@ -400,6 +421,9 @@ server <- function(input, output, session) {
   # Define NWL1_Geo leaflet output
   output$NWL1_Geo <- renderLeaflet({
     NWL1_Map <- leaflet()
+    
+    NWL1_Map <- NWL1_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     NWL1_Map <- NWL1_Map %>%
       addTiles(urlTemplate = "") %>%
@@ -454,6 +478,9 @@ server <- function(input, output, session) {
     SE2_Map <- leaflet()
     
     SE2_Map <- SE2_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    SE2_Map <- SE2_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
     function(el, x) {
@@ -506,6 +533,9 @@ server <- function(input, output, session) {
     SW1_Map <- leaflet()
     
     SW1_Map <- SW1_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    SW1_Map <- SW1_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
     function(el, x) {
@@ -556,6 +586,9 @@ server <- function(input, output, session) {
   # Define YIC_Geo leaflet output
   output$YIC_Geo <- renderLeaflet({
     YIC_Map <- leaflet()
+    
+    YIC_Map <- YIC_Map %>%
+      addProviderTiles("CartoDB.Positron")
     
     YIC_Map <- YIC_Map %>%
       addTiles(urlTemplate = "") %>%

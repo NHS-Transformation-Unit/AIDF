@@ -18,7 +18,8 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
-source("../geospatial/r_scripts/geospatial.R")
+source("../geospatial/r_scripts/Implementation/implementation_mapping.R")
+source("../geospatial/r_scripts/Network/network_mapping.R")
 
 ```
 
@@ -46,7 +47,7 @@ More information on the AIDF can be found [here](https://transform.england.nhs.u
 This mapping tool has been developed by the NHS Transformation Unit to provide business intelligence support to the AIDF by presenting AI data, monitoring progress, and provide data insights.
 
 
-## AIDF Mapping {.tabset .tabset-fade}
+## AIDF Member Mapping {.tabset .tabset-fade}
 ***
 
 This mapping tool presents data on the following information related to each participating Trust:
@@ -70,6 +71,37 @@ Additionally, the sliding filter below the map allows the user to select the imp
 library(shiny)
 shinyAppDir(
   "../geospatial/r_scripts/Implementation/",
+  options = list(width = "100%", height = "700px")
+)
+```
+
+The data that is contained within the current tool is accurate as of 2024-03-14.
+
+
+## AIDF Member Mapping {.tabset .tabset-fade}
+***
+
+This mapping tool presents data on the following information related to each participating Trust:
+
+* Trust
+* Imaging Network
+* NHS Region
+* Modality
+* Body Part
+* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
+
+There are plans to include data relating to the AI supplier/product in future iterations of this tool.
+
+
+### AIDF Imaging Network Maps
+The maps below show the specific imaging network boundaries and the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
+
+Please use the drop down menu below the visualisation to select the imaging network you wish to visualise.
+
+```{r}
+library(shiny)
+shinyAppDir(
+  "../geospatial/r_scripts/Network/",
   options = list(width = "100%", height = "700px")
 )
 ```
