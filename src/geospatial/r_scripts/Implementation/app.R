@@ -24,7 +24,7 @@ ui <- tagAppendChild(ui, tags$script("
 server <- function(input, output) {
   # Define color palette
   color_palette <- colorFactor(
-    palette = c("#b15928", "#34baeb", "#b2df8a", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
+    palette = c("#b15928", "#34baeb", "#262626", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
     domain = OHID_shp_dates$`Network Name 1`
   )
   

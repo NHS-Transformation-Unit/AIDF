@@ -47,7 +47,7 @@ More information on the AIDF can be found [here](https://transform.england.nhs.u
 This mapping tool has been developed by the NHS Transformation Unit to provide business intelligence support to the AIDF by presenting AI data, monitoring progress, and provide data insights.
 
 
-## AIDF Member Mapping {.tabset .tabset-fade}
+## AIDF Member Mapping (UK) {.tabset .tabset-fade}
 ***
 
 This mapping tool presents data on the following information related to each participating Trust:
@@ -63,9 +63,9 @@ There are plans to include data relating to the AI supplier/product in future it
 
 
 ### AIDF Member Map 1
-The map below shows the location of each Trust currently participating in the AIDF initiative. The colour of each Trust site corresponds to its parent Imaging Network. 
+The map below visualises the location of each NHS Trust currently participating in the AIDF initiative. The colour of each Trust boundary corresponds to its parent Imaging Network. 
 
-Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to see the uptake of AI diagnostic tools across the UK.
+Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time.
 
 ```{r}
 library(shiny)
@@ -77,26 +77,17 @@ shinyAppDir(
 
 The data that is contained within the current tool is accurate as of 2024-03-14.
 
+### Metadata
+Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
-## AIDF Member Mapping {.tabset .tabset-fade}
+## AIDF Network Mapping {.tabset .tabset-fade}
 ***
 
-This mapping tool presents data on the following information related to each participating Trust:
-
-* Trust
-* Imaging Network
-* NHS Region
-* Modality
-* Body Part
-* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
-
-There are plans to include data relating to the AI supplier/product in future iterations of this tool.
-
+The maps below visualise specific Imaging Network boundaries. Included within each boundary is the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
 
 ### AIDF Imaging Network Maps
-The maps below show the specific imaging network boundaries and the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
 
-Please use the drop down menu below the visualisation to select the imaging network you wish to visualise.
+Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
 
 ```{r}
 library(shiny)
@@ -108,5 +99,3 @@ shinyAppDir(
 
 The data that is contained within the current tool is accurate as of 2024-03-14.
 
-### Metadata
-Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).

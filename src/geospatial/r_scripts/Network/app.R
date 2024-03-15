@@ -4,17 +4,17 @@ ui <- fluidPage(
   
   selectInput("map_select", "Select Imaging Network:",
               choices = c("Norfolk, Suffolk & North Essex", 
-                          "Herts West Essex, Bedford Luton and Mid and South Essex systems", 
-                          "EMRAD", 
+                          "Herts West Essex, Bedford Luton and Mid and South Essex", 
+                          "East Midlands (EMRAD)", 
                           "Hull and North Yorkshire", 
                           "North East London",
                           "North East and North Cumbria", 
-                          "Cheshire and Mersey Radiology Imaging Network", 
+                          "Cheshire and Mersey", 
                           "Greater Manchester", 
                           "North West London", 
-                          "Surrey, Sussex and Frimley Imaging Network",
-                          "PENRAD",
-                          "YIC"))
+                          "Surrey, Sussex and Frimley",
+                          "South West (PENRAD)",
+                          "Yorkshire Imaging Collaborative"))
   
 )
 
@@ -24,17 +24,17 @@ server <- function(input, output, session) {
   output$leaflet_output <- renderUI({
     selected_map <- switch(input$map_select,
                            "Norfolk, Suffolk & North Essex" = "E1_Geo",
-                           "Herts West Essex, Bedford Luton and Mid and South Essex systems" = "E2_Geo",
-                           "EMRAD" = "EM1_Geo",
+                           "Herts West Essex, Bedford Luton and Mid and South Essex" = "E2_Geo",
+                           "East Midlands (EMRAD)" = "EM1_Geo",
                            "Hull and North Yorkshire" = "HNY_Geo",
                            "North East London" = "NEL1_Geo",
                            "North East and North Cumbria" = "NENC_Geo",
-                           "Cheshire and Mersey Radiology Imaging Network" = "NWCM_Geo",
+                           "Cheshire and Mersey" = "NWCM_Geo",
                            "Greater Manchester" = "NWGM_Geo",
                            "North West London" = "NWL1_Geo",
-                           "Surrey, Sussex and Frimley Imaging Network" = "SE2_Geo",
-                           "PENRAD" = "SW1_Geo",
-                           "YIC" = "YIC_Geo"
+                           "Surrey, Sussex and Frimley" = "SE2_Geo",
+                           "South West (PENRAD)" = "SW1_Geo",
+                           "Yorkshire Imaging Collaborative" = "YIC_Geo"
     )
     leafletOutput(selected_map)
   })
@@ -437,7 +437,7 @@ server <- function(input, output, session) {
     NWGM_Map <- NWGM_Map %>%
       addPolygons(
         data = NWGM_Geo,
-        color = "#b2df8a",
+        color = "#262626",
         opacity = 0.8,
         weight = 1.25,
         stroke = TRUE,
@@ -459,7 +459,7 @@ server <- function(input, output, session) {
         data = NWGM_Geo,
         lng = ~Longitude_1m,
         lat = ~Latitude_1m,
-        color = "#b2df8a",
+        color = "#262626",
         radius = 5,
         group = "NHS Trust Locations",
         popup = ~paste(
