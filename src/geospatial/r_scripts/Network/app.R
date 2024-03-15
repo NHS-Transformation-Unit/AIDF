@@ -363,6 +363,61 @@ server <- function(input, output, session) {
       )
   }) 
   
+  # Define NWCM_Geo leaflet output
+  output$NWCM_Geo <- renderLeaflet({
+    NWCM_Map <- leaflet()
+    
+    NWCM_Map <- NWCM_Map %>%
+      addProviderTiles("CartoDB.Positron")
+    
+    NWCM_Map <- NWCM_Map %>%
+      addTiles(urlTemplate = "") %>%
+      htmlwidgets::onRender("
+    function(el, x) {
+      el.style.backgroundColor = 'white';
+    }
+  ")
+    
+    #### Adding provider boundary polygons
+    NWCM_Map <- NWCM_Map %>%
+      addPolygons(
+        data = NWCM_Geo,
+        color = "#b15928",
+        opacity = 0.8,
+        weight = 1.25,
+        stroke = TRUE,
+        group = "Live Providers",
+        popup = ~paste(
+          "Trust: ", Trust, "<br>",
+          "Network Name: ", `Network Name 1`, "<br>",
+          "Region: ", Region, "<br>",
+          "Modality: ", Modality, "<br>",
+          "Body Part: ", `Body_Part`, "<br>",
+          "Implementation End Date: ", `Net_Implementation_End`
+        )
+      )
+    
+    #### Adding provider HQ circle markers
+    
+    NWCM_Map <- NWCM_Map %>%
+      addCircleMarkers(
+        data = NWCM_Geo,
+        lng = ~Longitude_1m,
+        lat = ~Latitude_1m,
+        color = "#b15928",
+        radius = 5,
+        group = "NHS Trust Locations",
+        popup = ~paste(
+          "Trust: ", Trust, "<br>",
+          "Network Name: ", `Network Name 1`, "<br>",
+          "Region: ", Region, "<br>",
+          "Modality: ", Modality, "<br>",
+          "Body Part: ", `Body_Part`, "<br>",
+          "Implementation End Date: ", `Net_Implementation_End`
+        )
+      )
+  }) 
+  
   # Define NWGM_Geo leaflet output
   output$NWGM_Geo <- renderLeaflet({
     NWGM_Map <- leaflet()
