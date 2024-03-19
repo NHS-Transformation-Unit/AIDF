@@ -63,7 +63,6 @@ AIDF_Map_2 <- AIDF_Map_2 %>%
       "Trust: ", Trust, "<br>",
       "Network Name: ", `Network Name 1`, "<br>",
       "Region: ", Region, "<br>",
-      "Modality: ", Modality, "<br>",
       "Body Part: ", `Body_Part`, "<br>",
       "Implementation End Date: ", `Net_Implementation_End`
     )

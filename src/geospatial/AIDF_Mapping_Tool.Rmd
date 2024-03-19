@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
 source("../geospatial/r_scripts/Implementation/implementation_mapping.R")
+source("../geospatial/r_scripts/Modality/modality_mapping.R")
 source("../geospatial/r_scripts/Network/network_mapping.R")
 
 ```
@@ -59,11 +60,11 @@ This mapping tool presents data on the following information related to each par
 * Body Part
 * Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
 
-There are plans to include data relating to the AI supplier/product in future iterations of this tool.
+There is potential to include data relating to the AI supplier/product in future iterations of this tool.
 
 
 ### AIDF Member Map 1
-The map below visualises the location of each NHS Trust currently participating in the AIDF initiative. The colour of each Trust boundary corresponds to its parent Imaging Network. 
+The map below visualises the location of each NHS Trust currently participating in the AIDF initiative. The colour of each Trust boundary corresponds to its parent Imaging Network. Non-participating Trusts are visualised using <span style="color:#97bdb0; font-weight:bold;">green-grey</span> to provide perspective.
 
 Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time.
 
@@ -77,6 +78,29 @@ shinyAppDir(
 
 ### Metadata
 Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
+
+## AIDF Modality Mapping {.tabset .tabset-fade}
+***
+
+Similar to the AIDF Member Mapping (UK) above, this tool presents data on the following information related to each participating Trust:
+
+* Trust
+* Imaging Network
+* NHS Region
+* Body Part
+* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
+
+However, this tool uses colour to differentiate between the targeted modality of each Trust's implementation: Trusts using the tools to support CT scanning procedures are visualised in <span style="color:blue; font-weight:bold;">blue</span> and Trusts using the tools to support X-ray imaging are visualised in <span style="color:red; font-weight:bold;">red</span>.
+
+
+### AIDF Imaging Network Maps
+
+Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
+
+```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center'}
+# Render the AIDF_Map object
+AIDF_Map_2
+```
 
 ## AIDF Network Mapping {.tabset .tabset-fade}
 ***
