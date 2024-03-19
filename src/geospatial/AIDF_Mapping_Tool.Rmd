@@ -75,8 +75,6 @@ shinyAppDir(
 )
 ```
 
-The data that is contained within the current tool is accurate as of 2024-03-14.
-
 ### Metadata
 Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
