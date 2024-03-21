@@ -12,8 +12,7 @@ ui <- fluidPage(
               step = 1,
               animate = animationOptions(interval = 150),
               width = "775px",
-              timeFormat = "%Y-%m-%d",
-              loop = TRUE)
+              timeFormat = "%Y-%m-%d"),
   
   tags$script("
     $(document).on('shiny:value', function(event) {
