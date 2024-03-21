@@ -9,8 +9,8 @@ ui <- fluidPage(
               min = as.Date("2023-11-30"),
               max = max(OHID_shp_dates$Net_Implementation_End),
               value = max(OHID_shp_dates$Net_Implementation_End),
-              step = 1,
-              animate = animationOptions(interval = 150),
+              step = 14,
+              animate = animationOptions(interval = 1500),
               width = "775px",
               timeFormat = "%Y-%m-%d"),
   
