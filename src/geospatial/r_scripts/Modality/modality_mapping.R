@@ -8,6 +8,9 @@ OHID_XRay <- OHID_merge %>%
 OHID_CT <- OHID_merge %>%
   filter(Modality == "CT Scan")
 
+OHID_Both <- OHID_merge %>%
+  filter(Modality == "CT Scan and X-Ray")
+
 ## Creating the base leaflet map
 
 AIDF_Map_2 <- leaflet()
@@ -59,6 +62,24 @@ AIDF_Map_2 <- AIDF_Map_2 %>%
     weight = 1.25,
     stroke = TRUE,
     group = "CT Scan",
+    popup = ~paste(
+      "Trust: ", Trust, "<br>",
+      "Network Name: ", `Network Name 1`, "<br>",
+      "Region: ", Region, "<br>",
+      "Body Part: ", `Body_Part`, "<br>",
+      "Implementation End Date: ", `Net_Implementation_End`
+    )
+  )
+
+## Adding live provider layers for the NHS region geojson file
+AIDF_Map_2 <- AIDF_Map_2 %>%
+  addPolygons(
+    data = OHID_Both,
+    color = "orange",
+    opacity = 0.8,
+    weight = 1.25,
+    stroke = TRUE,
+    group = "CT Scan and X-Ray",
     popup = ~paste(
       "Trust: ", Trust, "<br>",
       "Network Name: ", `Network Name 1`, "<br>",

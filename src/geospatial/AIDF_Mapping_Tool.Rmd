@@ -48,7 +48,7 @@ More information on the AIDF can be found [here](https://transform.england.nhs.u
 This mapping tool has been developed by the NHS Transformation Unit to provide business intelligence support to the AIDF by presenting AI data, monitoring progress, and provide data insights.
 
 
-## AIDF Member Mapping (UK) {.tabset .tabset-fade}
+## AIDF Member Mapping {.tabset .tabset-fade}
 ***
 
 This mapping tool presents data on the following information related to each participating Trust:
