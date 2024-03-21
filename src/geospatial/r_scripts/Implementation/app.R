@@ -1,43 +1,49 @@
-# Define UI
+# Implementation Mapping Shiny application
+
+## Designing the user interface of the implementation mapping Shiny application
+
 ui <- fluidPage(
-  tags$style(HTML(".irs-from {display: none;}")),  # Hide label for minimum value
-  leafletOutput("map", height = "600px"),  # Set the height here, for example, to 600 pixels
+  tags$style(HTML(".irs-from {display: none;}")),
+  leafletOutput("map", height = "650px"),  
   sliderInput("date_range", "Select Implementation End Date Range:",
-              min = min(OHID_shp_dates$Net_Implementation_End),
+              min = as.Date("2023-11-30"),
               max = max(OHID_shp_dates$Net_Implementation_End),
-              value = c(min(OHID_shp_dates$Net_Implementation_End), max(OHID_shp_dates$Net_Implementation_End)),
+              value = max(OHID_shp_dates$Net_Implementation_End),
               step = 1,
-              animate = FALSE,
+              animate = animationOptions(interval = 150),
               width = "775px",
-              timeFormat = "%Y-%m-%d")  # Set disable to TRUE for the minimum value
+              timeFormat = "%Y-%m-%d",
+              loop = TRUE)
+  
+  tags$script("
+    $(document).on('shiny:value', function(event) {
+      // Disable the handle corresponding to the minimum value
+      $('.irs-slider.single').eq(0).prop('disabled', true);
+    });
+  ")
 )
 
-# Add JavaScript to disable the minimum value
-ui <- tagAppendChild(ui, tags$script("
-  $(document).on('shiny:value', function(event) {
-    // Disable the handle corresponding to the minimum value
-    $('.irs-slider.single').eq(0).prop('disabled', true);
-  });
-"))
-
-# Define server logic
+## Defining server logic
 server <- function(input, output) {
-  # Define color palette
   color_palette <- colorFactor(
     palette = c("#b15928", "#34baeb", "#262626", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
     domain = OHID_shp_dates$`Network Name 1`
   )
   
-  # Reactive expression to filter data based on selected date range
+  ### Reactive expression to filter data based on selected date range
   filtered_data <- reactive({
-    # Filter data based on selected date range
+    print(input$date_range)
+    
     OHID_shp_dates_filtered <- subset(OHID_shp_dates, 
-                                      Net_Implementation_End >= input$date_range[1] & 
-                                        Net_Implementation_End <= input$date_range[2])
+                                      Net_Implementation_End >= as.Date("2023-11-30") & 
+                                        Net_Implementation_End <= input$date_range[1])
+    
+    print(OHID_shp_dates_filtered)
+    
     OHID_shp_dates_filtered
   })
   
-  # Creating the base leaflet map
+  ### Creating the base leaflet map
   output$map <- renderLeaflet({
     leaflet() %>%
       addTiles(urlTemplate = "") %>%
@@ -82,5 +88,5 @@ server <- function(input, output) {
   })
 }
 
-# Run the Shiny app
+## Running the completed application
 shinyApp(ui = ui, server = server)

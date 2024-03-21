@@ -72,7 +72,7 @@ Additionally, the sliding filter below the map allows the user to select the imp
 library(shiny)
 shinyAppDir(
   "../geospatial/r_scripts/Implementation/",
-  options = list(width = "100%", height = "700px")
+  options = list(width = "100%", height = "800px")
 )
 ```
 
