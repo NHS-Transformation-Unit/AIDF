@@ -1,4 +1,4 @@
-# AIDF Map 1 ---------------------------------------------------------
+# Implementation Mapping Outputs
 
 ## Loading processed AIDF short form business case data
 
@@ -20,11 +20,11 @@ AIDF_Geo_Join <- left_join(OHID_Lookup, AIDF_Geo_Final, by = c("TrustCode" = "Or
 AIDF_Geo_LNl <- AIDF_Geo_Join %>%
   mutate(Status = ifelse(!is.na(SFBC_ID), "Live", "Not Live"))
 
-## Merging the final df and OHID shape file
+## Merging the final AIFG_Geo df and OHID shape file
 
 OHID_merge <- left_join(OHID_msoa_shp, AIDF_Geo_LNl, by = c("TrustCd" = "TrustCode"))
 
-# Filtering the shape files based on the value in `Status`
+## Filtering the shape files based on the value in `Status`
 
 OHID_shp_NL <- OHID_merge %>%
   filter(Status == "Not Live")
@@ -32,7 +32,7 @@ OHID_shp_NL <- OHID_merge %>%
 OHID_shp_L <- OHID_merge %>%
   filter(Status == "Live")
 
-#Formatting the date fields correctly for use in R shiny app
+## Formatting the date fields correctly for use in R shiny app
 
 OHID_shp_dates <- OHID_shp_L %>%
   mutate(Net_Implementation_Start = as.Date(Net_Implementation_Start, format = "%d/%m/%Y"),

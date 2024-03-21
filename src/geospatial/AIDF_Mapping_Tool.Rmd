@@ -90,16 +90,34 @@ Similar to the AIDF Member Mapping (UK) above, this tool presents data on the fo
 * Body Part
 * Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
 
-However, this tool uses colour to differentiate between the targeted modality of each Trust's implementation: Trusts using the tools to support CT scanning procedures are visualised in <span style="color:blue; font-weight:bold;">blue</span> and Trusts using the tools to support X-ray imaging are visualised in <span style="color:red; font-weight:bold;">red</span>.
+However, this tool uses colour to differentiate between the targeted modality of each Trust's implementation: Trusts using the tools to support CT scanning procedures are visualised in <span style="color:blue; font-weight:bold;">blue</span>, Trusts using the tools to support X-ray imaging are visualised in <span style="color:red; font-weight:bold;">red</span> and Trust using both X-Ray imaging and CT scanning procedures are visualised in <span style="color:orange; font-weight:bold;">orange</span>.
 
 
-### AIDF Imaging Network Maps
+### All Modalities
 
-Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
+This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging, CT scanning procedures or both modalities. Please use the layer control to visualise specific modalities.
 
-```{r map_output, echo=FALSE, fig.cap="AIDF Member Map", fig.align='center'}
+```{r map_output_1, echo=FALSE, fig.align='center'}
 # Render the AIDF_Map object
 AIDF_Map_2
+```
+
+### X-Ray
+
+This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging procedures.
+
+```{r map_output_2, echo=FALSE, fig.align='center'}
+# Render the AIDF_Map object
+AIDF_Map_3
+```
+
+### CT Scan
+
+This map shows the NHS Trusts utilising the AIDF to support specific CT scanning procedures.
+
+```{r map_output_3, echo=FALSE, fig.align='center'}
+# Render the AIDF_Map object
+AIDF_Map_4
 ```
 
 ## AIDF Network Mapping {.tabset .tabset-fade}
