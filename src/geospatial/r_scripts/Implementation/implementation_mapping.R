@@ -3,7 +3,7 @@
 
 ## AIDF data load
 
-AIDF_Geo_Final <- read.csv(paste0(here(),"/data/Processed SFBC/AIDF_Geo_Final.csv"))
+AIDF_Geo_Final <- read.csv(paste0(here(),"/data/processed SFBC/AIDF_Geo_Final.csv"))
 
 AIDF_Geo_Final <- AIDF_Geo_Final %>%
   rename("Network Name 1" = Network.Name.1,
@@ -13,7 +13,7 @@ AIDF_Geo_Final <- AIDF_Geo_Final %>%
 
 ## Merging the constituent data into one source
 
-OHID_Lookup_Path <- (paste0(here(), "/data/Geospatial/trust_msoa_lookup.xlsx"))
+OHID_Lookup_Path <- (paste0(here(), "/data/geospatial/trust_msoa_lookup.xlsx"))
 OHID_Lookup <- read_xlsx(OHID_Lookup_Path)
 
 AIDF_Geo_Join <- left_join(OHID_Lookup, AIDF_Geo_Final, by = c("TrustCode" = "Org code"))

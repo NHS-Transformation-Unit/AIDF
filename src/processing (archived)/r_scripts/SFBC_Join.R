@@ -1,9 +1,10 @@
+
 # Joining SFBC, AIDF network summary and NCDR location df
 
 ## Preparing the different files to be joined to
 
-AIDF_Summary_File_Path <- paste0(here(),"/data/TU Summaries/AIDF_Network_Summary.xlsx") 
-NHS_Trust_Location_File_Path <- paste0(here(),"/data/Geospatial/NCDR_Reference_Locations.xlsx")
+AIDF_Summary_File_Path <- paste0(here(),"/data/TU summaries/AIDF_Network_Summary.xlsx") 
+NHS_Trust_Location_File_Path <- paste0(here(),"/data/geospatial/NCDR_reference_locations.xlsx")
 
 AIDF_Ref_Raw <- read_excel(AIDF_Summary_File_Path)
 NHS_Trust_Lookup <- read_excel(NHS_Trust_Location_File_Path)
@@ -40,4 +41,4 @@ AIDF_Geo_Final <- AIDF_Geo_Final %>%
 
 ## Writing the final AIDF Geo file output
 
-write.csv(AIDF_Geo_Final, paste0(here(),"/data/Processed SFBC/AIDF_Geo_Final.csv"))
+write.csv(AIDF_Geo_Final, paste0(here(),"/data/processed SFBC/AIDF_Geo_Final.csv"))

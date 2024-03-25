@@ -1,6 +1,7 @@
+
 # Loading SFBC data from raw Excel files
 
-folder_path <- paste0(here(), "/data/Raw SFBC/")
+folder_path <- paste0(here(), "/data/raw SFBC/")
 
 sheet_names <- function(file_path) {
   
