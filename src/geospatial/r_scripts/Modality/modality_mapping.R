@@ -1,3 +1,4 @@
+
 # Modality Mapping Outputs
 
 ## Map visualising all modalities
@@ -101,6 +102,7 @@ AIDF_Map_2 <- AIDF_Map_2 %>%
     overlayGroups = c("X-Ray", "CT Scan", "CT Scan and X-Ray"),
     options = layersControlOptions(collapsed = FALSE))
 
+
 ## Map visualising X-ray only
 
 ### Filtering OHID_Merge df to visualise only X-Rays
@@ -151,6 +153,7 @@ AIDF_Map_3 <- AIDF_Map_3 %>%
       "Implementation End Date: ", `Net_Implementation_End`
     )
   )
+
 
 ## Map visualising CT Scans only
 

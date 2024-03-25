@@ -39,7 +39,7 @@ htmltools::img(src = knitr::image_uri(paste0(here(), "/images/TU_logo_large.png"
 
 The AI Diagnostic Fund (AIDF) will provide funding to accelerate the deployment of the most promising AI imaging and decision support tools to help diagnose patients more quickly.
 
-£21 million will be provided to 11 imaging networks, covering 64 NHS trusts across England, to speed up the roll out of AI diagnostic tools.
+£21 million will be provided to 12 imaging networks, covering 71 NHS trusts across England, to speed up the roll out of AI diagnostic tools.
 
 The AI Diagnostic Fund will prioritise certain technologies, such as tools that can support clinicians to analyse chest X-Rays - the most common tool used to assist a diagnosis for lung cancer - which is the leading cause of cancer death in the UK. With more than 600,000 chest X-rays performed each month in England, the deployment of diagnostic AI tools will potentially assist clinicians in diagnosing cancer earlier, which will improve patient outcomes.
 
@@ -66,7 +66,7 @@ There is potential to include data relating to the AI supplier/product in future
 ### AIDF Member Map 1
 The map below visualises the location of each NHS Trust currently participating in the AIDF initiative. The colour of each Trust boundary corresponds to its parent Imaging Network. Non-participating Trusts are visualised using <span style="color:#97bdb0; font-weight:bold;">green-grey</span> to provide perspective.
 
-Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time.
+Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time. Users can start and stop the inbuilt filter animation using the blue 'play/pause' button in the bottom right corner of the visualisation.
 
 ```{r}
 library(shiny)
@@ -137,5 +137,4 @@ shinyAppDir(
 )
 ```
 
-The data that is contained within the current tool is accurate as of 2024-03-14.
-
+The data that is contained within the current tool is accurate as of 2024-03-25.

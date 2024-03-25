@@ -1,4 +1,8 @@
-# Define UI
+
+# Implementation Mapping Shiny application
+
+## Shiny application user interface
+
 ui <- fluidPage(
   uiOutput("leaflet_output"),
   
@@ -18,9 +22,12 @@ ui <- fluidPage(
   
 )
 
-# Define server logic
+### Shiny application server logic
+
 server <- function(input, output, session) {
-  # Generate leaflet output based on selection
+  
+  ### Generate leaflet output based on selection
+  
   output$leaflet_output <- renderUI({
     selected_map <- switch(input$map_select,
                            "Norfolk, Suffolk & North Essex" = "E1_Geo",
@@ -39,14 +46,14 @@ server <- function(input, output, session) {
     leafletOutput(selected_map)
   })
   
-  # Define E1_Map leaflet output
+  ### Define E1_Map leaflet output
   output$E1_Geo <- renderLeaflet({
     E1_Map <- leaflet()
     
     E1_Map <- E1_Map %>%
       addProviderTiles("CartoDB.Positron")
     
-    # Add provider boundary polygons
+    #### Add provider boundary polygons
     E1_Map <- E1_Map %>%
       addTiles(urlTemplate = "") %>%
       htmlwidgets::onRender("
@@ -88,7 +95,8 @@ server <- function(input, output, session) {
       )
   })
   
-  # Define E2_Map leaflet output
+  
+  ### Define E2_Map leaflet output
   output$E2_Geo <- renderLeaflet({
     E2_Map <- leaflet()
     
@@ -143,7 +151,8 @@ server <- function(input, output, session) {
       )
   })
   
-  # Define EM1_Map leaflet output
+  
+  ### Define EM1_Map leaflet output
   output$EM1_Geo <- renderLeaflet({
     EM1_Map <- leaflet()
     
@@ -198,7 +207,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define HNY_Map leaflet output
+  
+  ### Define HNY_Map leaflet output
   output$HNY_Geo <- renderLeaflet({
     HNY_Map <- leaflet()
     
@@ -253,7 +263,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define NEL1_Geo leaflet output
+  
+  ### Define NEL1_Geo leaflet output
   output$NEL1_Geo <- renderLeaflet({
     NEL1_Map <- leaflet()
     
@@ -308,7 +319,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define NENC_Geo leaflet output
+  
+  ### Define NENC_Geo leaflet output
   output$NENC_Geo <- renderLeaflet({
     NENC_Map <- leaflet()
     
@@ -363,7 +375,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define NWCM_Geo leaflet output
+  
+  ### Define NWCM_Geo leaflet output
   output$NWCM_Geo <- renderLeaflet({
     NWCM_Map <- leaflet()
     
@@ -418,7 +431,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define NWGM_Geo leaflet output
+  
+  ### Define NWGM_Geo leaflet output
   output$NWGM_Geo <- renderLeaflet({
     NWGM_Map <- leaflet()
     
@@ -473,7 +487,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define NWL1_Geo leaflet output
+  
+  ### Define NWL1_Geo leaflet output
   output$NWL1_Geo <- renderLeaflet({
     NWL1_Map <- leaflet()
     
@@ -528,7 +543,8 @@ server <- function(input, output, session) {
       )
   }) 
   
-  # Define SE2_Geo leaflet output
+  
+  ### Define SE2_Geo leaflet output
   output$SE2_Geo <- renderLeaflet({
     SE2_Map <- leaflet()
     
@@ -583,7 +599,8 @@ server <- function(input, output, session) {
       )
   })  
   
-  # Define SW1_Geo leaflet output
+  
+  ### Define SW1_Geo leaflet output
   output$SW1_Geo <- renderLeaflet({
     SW1_Map <- leaflet()
     
@@ -638,7 +655,8 @@ server <- function(input, output, session) {
       )
   })  
   
-  # Define YIC_Geo leaflet output
+  
+  ### Define YIC_Geo leaflet output
   output$YIC_Geo <- renderLeaflet({
     YIC_Map <- leaflet()
     
@@ -695,4 +713,5 @@ server <- function(input, output, session) {
   
 }
 
+## Running the completed application
 shinyApp(ui = ui, server = server)

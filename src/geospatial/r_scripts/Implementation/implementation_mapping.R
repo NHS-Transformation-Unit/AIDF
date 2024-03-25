@@ -1,6 +1,7 @@
+
 # Implementation Mapping Outputs
 
-## Loading processed AIDF short form business case data
+## AIDF data load
 
 AIDF_Geo_Final <- read.csv(paste0(here(),"/data/Processed SFBC/AIDF_Geo_Final.csv"))
 

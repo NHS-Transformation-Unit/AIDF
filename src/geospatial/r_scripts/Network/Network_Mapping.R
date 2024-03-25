@@ -1,4 +1,5 @@
-## Creating separate shape file inputs for the different network maps
+
+# Filtering network shapefile inputs
 
 E1_Geo <- OHID_shp_dates %>%
   filter(`Network Name 1` == "Norfolk, Suffolk & North Essex")
