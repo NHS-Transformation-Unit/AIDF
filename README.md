@@ -23,18 +23,21 @@ To be edited.
 ``` plaintext
 
 ├─── data
+     └─── geospatial
+          └─── MSOA shapefile
+     └─── processed SFBC
+     └─── raw SFBC
+     └─── TU summaries
 ├─── images
 └─── src
-    └─── config
-    └─── geospatial
-        └─── r_scripts
-                └─── implementation
-                └─── modality
-                └─── network
-    └─── processing (archived)
-        └─── r_scripts
-
-    
+     └─── config
+     └─── geospatial
+          └─── r_scripts
+               └─── implementation
+               └─── modality
+               └─── network
+     └─── processing (archived)
+          └─── r_scripts
 ```
 
 <br/>
