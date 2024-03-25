@@ -1,4 +1,4 @@
-# Script for the loading of SFBC data from raw Excel files extracted from NHS Futures site
+# Loading SFBC data from raw Excel files
 
 folder_path <- paste0(here(), "/data/Raw SFBC/")
 

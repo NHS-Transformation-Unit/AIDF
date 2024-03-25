@@ -1,6 +1,7 @@
+
 # Implementation Mapping Shiny application
 
-## Designing the user interface of the implementation mapping Shiny application
+## Shiny application user interface
 
 ui <- fluidPage(
   tags$style(HTML(".irs-from {display: none;}")),
@@ -22,7 +23,8 @@ ui <- fluidPage(
   ")
 )
 
-## Defining server logic
+## Shiny application server logic
+
 server <- function(input, output) {
   color_palette <- colorFactor(
     palette = c("#b15928", "#34baeb", "#262626", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
@@ -30,12 +32,13 @@ server <- function(input, output) {
   )
   
   ### Reactive expression to filter data based on selected date range
+  
   filtered_data <- reactive({
     print(input$date_range)
     
     OHID_shp_dates_filtered <- subset(OHID_shp_dates, 
                                       Net_Implementation_End >= as.Date("2023-11-30") & 
-                                        Net_Implementation_End <= input$date_range[1])
+                                      Net_Implementation_End <= input$date_range[1])
     
     print(OHID_shp_dates_filtered)
     
@@ -43,6 +46,7 @@ server <- function(input, output) {
   })
   
   ### Creating the base leaflet map
+  
   output$map <- renderLeaflet({
     leaflet() %>%
       addTiles(urlTemplate = "") %>%

@@ -1,7 +1,6 @@
-# Script for the cleaning of SFBC data due to non-consistent formatting of files on NHS Futures site.
+# Script for the cleaning of SFBC data
 
-
-# Separation of specific imaging networks into DF for ease of cleaning
+## Separating imaging networks into distinct df for easier processing
 
 E1_df <- AIDF_df %>%
   filter(`Network Name 1` == "Norfolk, Suffolk & North Essex")
@@ -39,7 +38,7 @@ SW1_df <- AIDF_df %>%
 YIC_df <- AIDF_df %>%
   filter(`SFBC_ID` == "YIC2_SFBC")
 
-# Cleaning C&M
+### Cleaning C&M
 
 CM_Row <- 8
 CM_Value <- "Mersey and West Lancashire Teaching Hospitals NHS Trust"
@@ -59,7 +58,7 @@ NWCM_df <- NWCM_df %>%
   mutate(`Org code` = CM_Org,
          Trust = ifelse(row_number() == CM_Row, CM_Value, Trust))
 
-# Cleaning E1
+### Cleaning E1
 
 E1_Org <- c("RGM",
             "RGP",
@@ -73,7 +72,7 @@ E1_Org <- c("RGM",
 E1_df <- E1_df %>% 
   mutate(`Org code` = E1_Org)
 
-# Cleaning EM1
+### Cleaning EM1
 
 EM1_Row <- 7
 EM1_Value <- "University Hospitals of Leicester NHS Trust"
@@ -90,7 +89,7 @@ EM1_df <- EM1_df %>%
   mutate(`Org code` = EM1_Org,
          Trust = ifelse(row_number() == EM1_Row, EM1_Value, Trust))
 
-# Cleaning GM
+### Cleaning GM
 
 GM_Trusts <- c("Bolton NHS Foundation Trust",
                "Manchester University NHS Foundation Trust",
@@ -120,7 +119,7 @@ NWGM_df <- NWGM_df %>%
          `Org code` = GM_Org,) %>%
   filter(row_number() != GM_Remove)
 
-# Cleaning HNY
+### Cleaning HNY
 
 HNY_Row <- c(1, 2, 3)
 HNY_Value <- c("Hull University Teaching Hospitals NHS Trust",
@@ -135,14 +134,14 @@ HNY_df <- HNY_df %>%
   mutate(`Org code` = HNY_Org,
          Trust = ifelse(row_number() == HNY_Row, HNY_Value, Trust))
 
-# Cleaning NEL1
+### Cleaning NEL1
 
 remove_NELCA <- 4
 
 NEL1_df <- NEL1_df %>%
   slice(-remove_NELCA)
 
-# Cleaning NWL1
+### Cleaning NWL1
 
 remove_NWL1 <- c(1, 2, 4)
 
@@ -156,7 +155,7 @@ NWL1_df <- NWL1_df %>%
   mutate(`Org code` = NWL1_Org)
 
 
-# Cleaning SE2
+### Cleaning SE2
 
 SE2_df_dup <- data.frame(
   SFBC_ID = "SE2_SFBC",
@@ -184,7 +183,7 @@ SE2_Org <- c("RDU",
 SE2_df <- SE2_df_comb %>% 
   mutate(`Org code` = SE2_Org)
 
-# Combining all cleaned df
+### Combining all cleaned df
 
 AIDF_Proc <- bind_rows(list(E1_df = E1_df,
                             E2_df = E2_df,

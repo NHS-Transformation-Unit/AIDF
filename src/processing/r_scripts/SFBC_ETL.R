@@ -1,4 +1,4 @@
-# Script for the ETL of SFBC data files
+# ETL of SFBC files
 
 result <- result %>% mutate(SFBC_ID = str_split_fixed(FileName, "\\.", 2)[, 1])
 
