@@ -2,7 +2,9 @@
 
 # AIDF BI Support Geospatial Mapping Tool
 
-This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund..
+This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund (AIDF). Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases submitted to the AIDF 
+
+
 
 <br/>
 
@@ -20,15 +22,18 @@ To be edited.
 
 ``` plaintext
 
-├───data
-├───images
-└───src
-    ├───config
-    ├───geospatial
-      ├───r_scripts
-    ├───processing
-      ├───r_scripts
-    └───requirements
+├─── data
+├─── images
+└─── src
+    └─── config
+    └─── geospatial
+        └─── r_scripts
+                └─── implementation
+                └─── modality
+                └─── network
+    └─── processing (archived)
+        └─── r_scripts
+
     
 ```
 
