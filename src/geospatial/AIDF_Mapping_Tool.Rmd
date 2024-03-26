@@ -3,7 +3,7 @@ title: "AI Diagnostic Fund Network Mapping"
 author: "NHS Transformation Unit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
- html_document:
+  html_document:
     toc: true
     toc_depth: 2
     toc_float: true
