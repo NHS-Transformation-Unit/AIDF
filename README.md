@@ -34,8 +34,6 @@ Following the cloning of this Repo to the user's preferred IDE, and assuming all
 
 At present the structure of the repository is:
 
-To be edited.
-
 ``` plaintext
 
 ├─── data
@@ -55,6 +53,8 @@ To be edited.
      └─── processing (archived)
           └─── r_scripts
 ```
+
+For the purposes of running the model in the current build, the `raw SFBC` and `processing (archived)` folder can be ignored. These folders relate to earlier development work centred around processing the raw SFBC inputs into a single processed data file.
 
 <br/>
 
