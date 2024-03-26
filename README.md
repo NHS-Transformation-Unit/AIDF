@@ -1,6 +1,14 @@
 <img src="images/TU_logo_large.png" alt="TU logo" width="200" align="right"/>
 
+<br/>
+
+<br/>
+
+<br/>
+
 # AIDF BI Support Geospatial Mapping Tool
+
+<br/>
 
 This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund (AIDF). Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases available on the [NHS Futures site](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
@@ -16,7 +24,9 @@ The geospatial visualisations within this mapping tool have been created using t
 
 ## Using the Repo
 
-Users will need to ensure their working directory is structured as outlined in the [Repo Structure](#repo-structure) section of this ReadMe. As well as the scripts included within this Git repo, there are X data files users will need to run the mapping tool. These are outlined within the [`data`](#data) section of this ReadMe.
+Users will need to ensure their working directory is structured as outlined in the [Repo Structure](#repo-structure) section of this ReadMe. As well as the scripts included within this Git repo, there are four data files users will need to run the mapping tool, as well as an MSOA shapefile. These are outlined within the [`data`](#data) section of this ReadMe.
+
+Following the cloning of this Repo to the user's preferred IDE, and assuming all the constituent data files are located in the appropriate folder, the mapping tool can be recreated simply by **running the `AIDF_Mapping_Tool.Rmd` document** found within the `src > r_scripts > geospatial` folder. The tool can either be ran within the IDE or exported to an appropriate browser application.
 
 <br/>
 
@@ -57,7 +67,7 @@ Images such as TU logos and branding to add to outputs.
 
 ### `src`
 
-All code is stored in src. This is subdivided into three modules:
+All code is stored in `src`. This is subdivided into three modules:
 
 1. `config`: Files for configuring the output such as the `theme.css` for the html output.
 2. `geospatial`: Files for the creation of the geospatial html tool.
