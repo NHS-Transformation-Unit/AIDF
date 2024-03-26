@@ -2,15 +2,21 @@
 
 # AIDF BI Support Geospatial Mapping Tool
 
-This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund (AIDF). Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases submitted to the AIDF 
+This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund (AIDF). Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases available on the [NHS Futures site](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
+This tool aims to visualise three aspects of the AIDF programme:
 
+1. Key information related to the Imaging Networks and their respective NHS Trusts who are currently enrolled within the AIDF programme.
+2. The imaging procedure modality of each Imaging Network's planned AIDF utilisation.
+3. Geospatial visualisation of each Imaging Network's commissioning boundary and respective NHS Trust HQ locations.
+
+The geospatial visualisations within this mapping tool have been created using the `leaflet()` functions and Shiny applications within the R programming language.
 
 <br/>
 
 ## Using the Repo
 
-To be written.
+Users will need to ensure their working directory is structured as outlined in the [Repo Structure](#repo-structure) section of this ReadMe. As well as the scripts included within this Git repo, there are X data files users will need to run the mapping tool. These are outlined within the [`data`](#data) section of this ReadMe.
 
 <br/>
 
