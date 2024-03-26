@@ -10,7 +10,9 @@
 
 <br/>
 
-This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support the NHS England Artificial Intelligence Diagnostic Fund (AIDF). Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases available on the [NHS Futures site](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
+This repository contains the scripts for the creation of an interactive geospatial mapping tool developed to provide BI support to the NHS England Artificial Intelligence Diagnostic Fund (AIDF). More information on the AIDF is available [here](https://transform.england.nhs.uk/ai-lab/ai-lab-programmes/ai-in-imaging/ai-diagnostic-fund/).
+
+Data related to each of the NHS Trust providers and Imaging Networks was collected from the Short Form Business Cases available on the [NHS Futures site](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
 
 This tool aims to visualise three aspects of the AIDF programme:
 
