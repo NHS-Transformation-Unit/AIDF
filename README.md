@@ -40,7 +40,7 @@ In summary:
 2. Ensure all necessary data files are in their respective locations as outlined in [`data`](#data) section.
 3. Knit the `AIDF_Mapping_Tool.Rmd` file located within the `src > r_scripts > geospatial` folder.
 
-More information on how to run the visualisation tool is available in the `documentation/guidance/running_the_tool.md` file.
+More information on how to run the visualisation tool is available in the `documentation/running_the_tool.md` file.
 
 <br/>
 
