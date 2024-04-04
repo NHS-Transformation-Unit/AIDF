@@ -80,8 +80,8 @@ Where the extracted NHS Futures short form business case (SFBC) data will be sav
 
 The data files needed for the running of the tool are:
 
-1. `trust_msoa_lookup.xlsx` - a lookup table for linking NHS Trusts to Middle Layer Super Output Areas (MSOA) based on aggregated patient attendance from each MSOA. This data is accessible via the Office for Health Improvement and Disparities NHS Acute Hospital Trust Catchment Populations work available [here]([https://transform.england.nhs.uk/ai-lab/ai-lab-programmes/ai-in-imaging/ai-diagnostic-fund/](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)). The file is located in `src > data > geospatial`.
-2. `MSOA shapefile` - a ShapeFile of each MSOA in the UK, available from the Office for National Statistics Open Geography Portal [here](https://geoportal.statistics.gov.uk/datasets/ons::msoa-2011-to-msoa-2021-to-local-authority-district-2022-lookup-for-england-and-wales/about)).
+1. `trust_msoa_lookup.xlsx` - a lookup table for linking NHS Trusts to Middle Layer Super Output Areas (MSOA) based on aggregated patient attendance from each MSOA. This data is accessible via the Office for Health Improvement and Disparities NHS Acute Hospital Trust Catchment Populations work available [here](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9). The file is located in `src > data > geospatial`.
+2. `MSOA shapefile` - a ShapeFile of each MSOA in the UK, available from the Office for National Statistics Open Geography Portal [here](https://geoportal.statistics.gov.uk/datasets/ons::msoa-2011-to-msoa-2021-to-local-authority-district-2022-lookup-for-england-and-wales/about).
 3. `AIDF_Geo_Final.csv` - processed SFBC data are extracted and cleaned by the TU team from the raw SFBC files available on the NHS Futures site. The file is located in `src > data > processed SBFC`. Available upon request.
 
 ### `images`
