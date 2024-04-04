@@ -3,8 +3,8 @@
 
 ## Preparing the different files to be joined to
 
-AIDF_Summary_File_Path <- paste0(here(),"/data/TU summaries/AIDF_Network_Summary.xlsx") 
-NHS_Trust_Location_File_Path <- paste0(here(),"/data/geospatial/NCDR_reference_locations.xlsx")
+AIDF_Summary_File_Path <- paste0(here(),"/data/archived/TU summaries/AIDF_Network_Summary.xlsx") 
+NHS_Trust_Location_File_Path <- paste0(here(),"/data/archived/geospatial/NCDR_reference_locations.xlsx")
 
 AIDF_Ref_Raw <- read_excel(AIDF_Summary_File_Path)
 NHS_Trust_Lookup <- read_excel(NHS_Trust_Location_File_Path)
