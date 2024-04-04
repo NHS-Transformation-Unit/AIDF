@@ -34,6 +34,8 @@ The tool can be created in stages. This will take longer and requires the model 
 
 Running these scripts in sequence will allow users to create three distinct visualisations outside of the `.Rmd` output.
 
+<br/>
+
 ## Archived Data
 Included within this repository are a number of data files and scripts related to previous iterations of the AIDF BI Support Geospatial Mapping Tool pipeline. The scripts located in `src/processing (archived` folder were created for taking the raw SFBC Excel files from the AIDF NHS Futures site and processing them into a usable format for the creation of the geospatial tool. These files have been modified to access data files within their new archived locations.
 
