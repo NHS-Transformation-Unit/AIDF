@@ -19,6 +19,8 @@ source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
 source("../geospatial/r_scripts/implementation/implementation_mapping.R")
 source("../geospatial/r_scripts/modality/modality_mapping.R")
+source("../geospatial/r_scripts/network/network_mapping.R")
+source("../geospatial/r_scripts/network/app.R")
 
 ```
 
@@ -121,6 +123,6 @@ The maps below visualise specific Imaging Network boundaries. Included within ea
 
 Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
 
-<span style=font-weight:bold;">OUTPUT PLACEHOLDER</span>
+<iframe src="network.html" width="100%" height="600"></iframe>
 
 The data that is contained within the current tool is accurate as of 2024-03-25.
