@@ -14,7 +14,6 @@ packages <- c("here",
               "shiny",
               "readxl",
               "dplyr", 
-              "htmlwidgets", 
-              "pandoc")
+              "crosstalk")
 
 lapply(packages, library, character.only=TRUE)
