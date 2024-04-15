@@ -9,7 +9,6 @@ output:
     toc_float: true
     toc_collapsed: true
     css: ../config/nhs_tu_theme.css
-runtime: shiny
 ---
 
 
@@ -20,7 +19,6 @@ source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
 source("../geospatial/r_scripts/implementation/implementation_mapping.R")
 source("../geospatial/r_scripts/modality/modality_mapping.R")
-source("../geospatial/r_scripts/network/network_mapping.R")
 
 ```
 
@@ -68,13 +66,7 @@ The map below visualises the location of each NHS Trust currently participating 
 
 Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time. Users can start and stop the inbuilt filter animation using the blue 'play/pause' button in the bottom right corner of the visualisation.
 
-```{r}
-library(shiny)
-shinyAppDir(
-  "../geospatial/r_scripts/Implementation/",
-  options = list(width = "100%", height = "800px")
-)
-```
+<span style=font-weight:bold;">OUTPUT PLACEHOLDER</span>
 
 ### Metadata
 Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
@@ -129,12 +121,6 @@ The maps below visualise specific Imaging Network boundaries. Included within ea
 
 Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
 
-```{r}
-library(shiny)
-shinyAppDir(
-  "../geospatial/r_scripts/Network/",
-  options = list(width = "100%", height = "700px")
-)
-```
+<span style=font-weight:bold;">OUTPUT PLACEHOLDER</span>
 
 The data that is contained within the current tool is accurate as of 2024-03-25.
