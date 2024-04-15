@@ -1,5 +1,7 @@
 # Packages used in the across both Processing and Geospatial scripts.
 
+install.packages("pandoc")
+
 packages <- c("here",
               "purrr",
               "tidyverse",
@@ -14,7 +16,8 @@ packages <- c("here",
               "shiny",
               "readxl",
               "dplyr", 
-              "shiny")
+              "shiny",
+              "htmlwidgets", 
+              "pandoc")
 
 lapply(packages, library, character.only=TRUE)
-
