@@ -11,16 +11,14 @@ output:
     css: ../config/nhs_tu_theme.css
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
-source("../geospatial/r_scripts/implementation/implementation_mapping.R")
+source("../geospatial/r_scripts/implementation/implementation_mapping_v2.R")
 source("../geospatial/r_scripts/modality/modality_mapping.R")
 source("../geospatial/r_scripts/network/network_mapping.R")
-source("../geospatial/r_scripts/network/app.R")
 
 ```
 
@@ -68,7 +66,9 @@ The map below visualises the location of each NHS Trust currently participating 
 
 Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time. Users can start and stop the inbuilt filter animation using the blue 'play/pause' button in the bottom right corner of the visualisation.
 
-<span style=font-weight:bold;">OUTPUT PLACEHOLDER</span>
+```{r imp_mapping, echo=FALSE, fig.align='center'}
+imp_output
+```
 
 ### Metadata
 Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
@@ -92,7 +92,6 @@ However, this tool uses colour to differentiate between the targeted modality of
 This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging, CT scanning procedures or both modalities. Please use the layer control to visualise specific modalities.
 
 ```{r map_output_1, echo=FALSE, fig.align='center'}
-# Render the AIDF_Map object
 AIDF_Map_2
 ```
 
@@ -101,7 +100,6 @@ AIDF_Map_2
 This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging procedures.
 
 ```{r map_output_2, echo=FALSE, fig.align='center'}
-# Render the AIDF_Map object
 AIDF_Map_3
 ```
 
@@ -110,19 +108,97 @@ AIDF_Map_3
 This map shows the NHS Trusts utilising the AIDF to support specific CT scanning procedures.
 
 ```{r map_output_3, echo=FALSE, fig.align='center'}
-# Render the AIDF_Map object
 AIDF_Map_4
 ```
 
-## AIDF Network Mapping {.tabset .tabset-fade}
+## AIDF Network Mapping {.tabset .tabset-dropdown}
 ***
 
-The maps below visualise specific Imaging Network boundaries. Included within each boundary is the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
+The maps below visualize specific Imaging Network boundaries. Included within each boundary is the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
 
-### AIDF Imaging Network Maps
+Please use the drop down menu below the visualization to select the Imaging Network you wish to visualize.
 
-Please use the drop down menu below the visualisation to select the Imaging Network you wish to visualise.
+### Norfolk, Suffolk & North Essex
 
-<iframe src="network.html" width="100%" height="600"></iframe>
+```{r E1_Map, echo=FALSE}
+E1_Map
+```
+
+### Herts West Essex, Bedford Luton and Mid and South Essex
+
+
+```{r E2_Map, echo=FALSE}
+E2_Map
+```
+
+### East Midlands (EMRAD)
+
+
+```{r EM1_Map, echo=FALSE}
+EM1_Map
+```
+
+### Hull and North Yorkshire
+
+
+```{r HNY_Map, echo=FALSE}
+HNY_Map
+```
+
+### North East London
+
+
+```{r NEL1_Map, echo=FALSE}
+NEL1_Map
+```
+
+### North East and North Cumbria
+
+
+```{r NENC_Map, echo=FALSE}
+NENC_Map
+```
+
+### Cheshire and Merseyside
+
+
+```{r NWCM_Map, echo=FALSE}
+NWCM_Map
+```
+
+### Greater Manchester
+
+
+```{r NWGM_Map, echo=FALSE}
+NWGM_Map
+```
+
+### North West London
+
+
+```{r NWL1_Map, echo=FALSE}
+NWL1_Map
+```
+
+### Surrey, Sussex and Frimley
+
+
+```{r SE2_Map, echo=FALSE}
+SE2_Map
+```
+
+### Devon, Cornwall and Isles of Scilly (PenRAD)
+
+
+```{r SW1_Map, echo=FALSE}
+SW1_Map
+```
+
+### Yorkshire, the Humber and North Lincolnshire (YIC)
+
+
+```{r YIC_Map, echo=FALSE}
+YIC_Map
+```
 
 The data that is contained within the current tool is accurate as of 2024-03-25.
