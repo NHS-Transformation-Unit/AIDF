@@ -1,5 +1,5 @@
 
-# Implementation Mapping Shiny application
+# Network Mapping Shiny application
 
 ## Shiny application user interface
 
@@ -144,4 +144,6 @@ server <- function(input, output, session) {
 ## Running the completed application
 shinyApp(ui = ui, server = server)
 
-#htmlwidgets::saveWidget(ui, "../geospatial/r_scripts/network/network.html", selfcontained = TRUE)
+network_path <- "../geospatial/r_scripts/network/network.html"
+
+saveWidget(ui, network_path, selfcontained = TRUE)
