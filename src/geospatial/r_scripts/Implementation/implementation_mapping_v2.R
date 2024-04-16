@@ -33,7 +33,6 @@ OHID_shp_dates <- OHID_shp_L %>%
   mutate(Net_Implementation_Start = as.Date(Net_Implementation_Start, format = "%d/%m/%Y"),
          Net_Implementation_End = as.Date(Net_Implementation_End, format = "%d/%m/%Y"))
 
-#color_palette <- colorFactor(
-#  palette = c("#b15928", "#34baeb", "#262626", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
-#  domain = unique(OHID_shp_dates$`Network Name 1`)
-#)
+color_palette <- colorFactor(
+  palette = c("#b15928", "#34baeb", "#262626", "#33a02c", "#cab2d6", "#e31a1c", "#fdbf6f", "#ff7f00", "#6a3d9a", "#fb9a99", "#c51b7d", "#3458eb"),
+  domain = unique(OHID_shp_dates$`Network Name 1`))

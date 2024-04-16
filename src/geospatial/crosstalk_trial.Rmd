@@ -5,27 +5,16 @@ date: "2024-04-15"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-
-source("../config/r_scripts/packages.R")
-source("../geospatial/r_scripts/geojson.R")
-source("../geospatial/r_scripts/implementation/implementation_mapping_v2.R")
-source("../geospatial/r_scripts/modality/modality_mapping.R")
-source("../geospatial/r_scripts/network/network_mapping.R")
-
-```
-
 ```{r}
 library(crosstalk)
 library(leaflet)
 library(DT)
 
 # Wrap data frame in SharedData
-sd <- SharedData$new(OHID_shp_dates)
+sd <- SharedData$new(quakes[sample(nrow(quakes), 100),])
 
 # Create a filter input
-filter_slider("Net_Implementation_End", "Implementation End Date Range", sd, column=~Net_Implementation_End, step=0.1, width=250)
+filter_slider("mag", "Magnitude", sd, column=~mag, step=0.1, width=250)
 
 # Use SharedData like a dataframe with Crosstalk-enabled widgets
 bscols(

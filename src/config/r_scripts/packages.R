@@ -1,7 +1,5 @@
 # Packages used in the across both Processing and Geospatial scripts.
 
-install.packages("leaflet")
-
 packages <- c("here",
               "purrr",
               "tidyverse",

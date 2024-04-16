@@ -68,9 +68,10 @@ Additionally, the sliding filter below the map allows the user to select the imp
 
 ```{r imp_mapping, echo=FALSE, fig.align='center'}
 
+devtools::install_github("dmurdoch/leaflet@crosstalk4")
+
 # Create a SharedData object
 OHID_L_shared <- SharedData$new(OHID_shp_dates)
-OHID_L_shared_df <- SharedData$new(OHID_shp_dates$data, group = OHID_L_shared$groupName)
 
 # Creating the base leaflet map
 imp_mapping <- leaflet() %>%
@@ -81,7 +82,7 @@ imp_mapping <- leaflet() %>%
     }") %>%
   
   addPolygons(
-    data = OHID_NL_shared,
+    data = OHID_merge,
     fillColor = "lightgrey",
     fillOpacity = 0.05,
     color = "rgba(46, 139, 87, 0.5)",
@@ -95,9 +96,8 @@ imp_mapping <- leaflet() %>%
   ) %>%
   
   addPolygons(
-    data = OHID_L_shared_df,
-    color = "blue",
-    #color = ~color_palette(`Network Name 1`),
+    data = OHID_L_shared,
+    color = ~color_palette(`Network Name 1`),
     opacity = 0.8,
     weight = 1.25,
     stroke = TRUE,
@@ -118,7 +118,7 @@ imp_mapping <- leaflet() %>%
 
 bscols(widths = c(10, 1),
        list(filter_slider(id = "Net_Implementation_End", label = "Implementation End Date: ",
-                          sharedData = OHID_L_shared_df, column = ~Net_Implementation_End),
+                          sharedData = OHID_L_shared, column = ~Net_Implementation_End),
             imp_mapping))
 
 ```
