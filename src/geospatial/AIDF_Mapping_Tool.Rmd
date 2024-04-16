@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("../config/r_scripts/packages.R")
 source("../geospatial/r_scripts/geojson.R")
-source("../geospatial/r_scripts/implementation/implementation_mapping_v2.R")
+source("../geospatial/r_scripts/implementation/implementation_mapping.R")
 source("../geospatial/r_scripts/modality/modality_mapping.R")
 source("../geospatial/r_scripts/network/network_mapping.R")
 
@@ -116,9 +116,8 @@ imp_mapping <- leaflet() %>%
 
 bscols(widths = c(10, 1),
        list(filter_slider(id = "Net_Implementation_End", label = "Implementation End Date: ",
-                          sharedData = OHID_L_shared, column = ~Net_Implementation_End),
+                          sharedData = OHID_L_shared, column = ~Net_Implementation_End, animate = TRUE),
             imp_mapping))
-
 ```
 
 ### Metadata
