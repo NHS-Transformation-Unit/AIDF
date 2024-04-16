@@ -68,8 +68,6 @@ Additionally, the sliding filter below the map allows the user to select the imp
 
 ```{r imp_mapping, echo=FALSE, fig.align='center'}
 
-devtools::install_github("dmurdoch/leaflet@crosstalk4")
-
 # Create a SharedData object
 OHID_L_shared <- SharedData$new(OHID_shp_dates)
 
