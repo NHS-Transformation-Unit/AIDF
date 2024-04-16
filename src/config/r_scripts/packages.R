@@ -1,11 +1,12 @@
 # Packages used in the across both Processing and Geospatial scripts.
 
+install.packages("leaflet")
+
 packages <- c("here",
               "purrr",
               "tidyverse",
               "tidyr",
               "stringr",
-              "leaflet",
               "openxlsx",
               "sf",
               "plotly",
@@ -14,6 +15,7 @@ packages <- c("here",
               "shiny",
               "readxl",
               "dplyr", 
-              "crosstalk")
+              "crosstalk",
+              "leaflet")
 
 lapply(packages, library, character.only=TRUE)

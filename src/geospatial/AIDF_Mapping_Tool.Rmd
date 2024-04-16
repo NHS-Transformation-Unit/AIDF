@@ -67,7 +67,60 @@ The map below visualises the location of each NHS Trust currently participating 
 Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time. Users can start and stop the inbuilt filter animation using the blue 'play/pause' button in the bottom right corner of the visualisation.
 
 ```{r imp_mapping, echo=FALSE, fig.align='center'}
-imp_output
+
+# Create a SharedData object
+OHID_L_shared <- SharedData$new(OHID_shp_dates)
+OHID_L_shared_df <- SharedData$new(OHID_shp_dates$data, group = OHID_L_shared$groupName)
+
+# Creating the base leaflet map
+imp_mapping <- leaflet() %>%
+  addTiles(urlTemplate = "") %>%
+  htmlwidgets::onRender("
+    function(el, x) {
+      el.style.backgroundColor = 'white';
+    }") %>%
+  
+  addPolygons(
+    data = OHID_NL_shared,
+    fillColor = "lightgrey",
+    fillOpacity = 0.05,
+    color = "rgba(46, 139, 87, 0.5)",
+    weight = 1.25,
+    stroke = TRUE,
+    group = "NL Providers") %>%
+  
+  addLayersControl(
+    overlayGroups = c("NL Providers"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  
+  addPolygons(
+    data = OHID_L_shared_df,
+    color = "blue",
+    #color = ~color_palette(`Network Name 1`),
+    opacity = 0.8,
+    weight = 1.25,
+    stroke = TRUE,
+    group = "Live Providers",
+    popup = ~paste(
+      "Trust: ", Trust, "<br>",
+      "Network Name: ", `Network Name 1`, "<br>",
+      "Region: ", Region, "<br>",
+      "Modality: ", Modality, "<br>",
+      "Body Part: ", `Body_Part`, "<br>",
+      "Implementation End Date: ", `Net_Implementation_End`
+    )) %>%
+  
+  addLayersControl(
+    overlayGroups = c("Live Providers"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+bscols(widths = c(10, 1),
+       list(filter_slider(id = "Net_Implementation_End", label = "Implementation End Date: ",
+                          sharedData = OHID_L_shared_df, column = ~Net_Implementation_End),
+            imp_mapping))
+
 ```
 
 ### Metadata
