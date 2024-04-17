@@ -116,7 +116,7 @@ imp_mapping <- leaflet() %>%
 
 bscols(widths = c(10, 1),
        list(filter_slider(id = "Net_Implementation_End", label = "Implementation End Date: ",
-                          sharedData = OHID_L_shared, column = ~Net_Implementation_End, animate = TRUE)))
+                          sharedData = OHID_L_shared, column = ~Net_Implementation_End)))
             
 imp_mapping
 
