@@ -3,7 +3,7 @@
 ## Introduction
 There are several ways in which the AIDF BI Support Geospatial Mapping Tool can be ran. This guidance provides an overview of the different approaches and the stages in which these need to be undertaken. There are two ways in which the tool can be ran:
 
-* Knitting the `AIDF_Mapping_Tool.Rmd` file within the `src/r_scripts/geospatial` folder will run the tool and create the viewable instance of the tool itself, which can in turn be loaded into an external browser.
+* Knitting the `AIDF_Mapping_Tool.Rmd` file within the `src/geospatial` folder will run the tool and create the viewable instance of the tool itself, which can in turn be loaded into an external browser.
 * Running the individual geospatial mapping scripts to load the processed AIDF data and create distinct visualisations from it. This is more labour intensive but is useful for understanding the mechanics of the tool.
 
 <br/>
@@ -28,16 +28,16 @@ The tool can be created in stages. This will take longer and requires the model 
 
 1. Run the `src/config/r_scripts/packages.R` script. This will load all required packages into the library.
 2. Run the `src/geospatial/r_scripts/geojson.R` script. This will load the MSOA ShapeFile and ensure it is in the right format to be utilised by the `leaflet()` package.
-3. Run the `src/geospatial/r_scripts/implementation/implementation_mapping.R` script. This will not only load the `AIDF_Geo_Final.csv` file into the environment, but will also begin to create and filter the appropriate geospatial dataframes for use within the `shiny()` applications built by this script for loading into the `AIDF_Mapping_Tool.Rmd` file. These geospatial dataframes relate specifically to the implementation mapping section of the output.
+3. Run the `src/geospatial/r_scripts/implementation/implementation_mapping.R` script. This will not only load the `AIDF_Geo_Final.csv` file into the environment, but will also begin to create and filter the appropriate geospatial dataframes for use within the `AIDF_Mapping_Tool.Rmd` file. These geospatial dataframes relate specifically to the implementation mapping section of the output.
 4. Run the `src/geospatial/r_scripts/modality/modality_mapping.R` script. This script creates further geospatial dataframes visualising specific imaging modalities for use by the `leaflet()` visualisations built by this script for loading into the `AIDF_Mapping_Tool.Rmd` file.
-5. Run the `src/geospatial/r_scripts/network/network_mapping.R` script. This script creates further geospatial dataframes visualising specific imaging modalities for use within the `shiny()` applications built by this script for loading into the `AIDF_Mapping_Tool.Rmd` file. These geospatial dataframes relate specifically to the network mapping section of the output.
+5. Run the `src/geospatial/r_scripts/network/network_mapping.R` script. This script creates further geospatial dataframes visualising specific imaging modalities for use within the `AIDF_Mapping_Tool.Rmd` file. These geospatial dataframes relate specifically to the network mapping section of the output.
 
 Running these scripts in sequence will allow users to create three distinct visualisations outside of the `.Rmd` output.
 
 <br/>
 
 ## Archived Data
-Included within this repository are a number of data files and scripts related to previous iterations of the AIDF BI Support Geospatial Mapping Tool pipeline. The scripts located in `src/processing (archived` folder were created for taking the raw SFBC Excel files from the AIDF NHS Futures site and processing them into a usable format for the creation of the geospatial tool. These files have been modified to access data files within their new archived locations.
+Included within this repository are a number of data files and scripts related to previous iterations of the AIDF BI Support Geospatial Mapping Tool pipeline. The scripts located in `src/processing (archived)/r_scripts` folder were created for taking the raw SFBC Excel files from the AIDF NHS Futures site and processing them into a usable format for the creation of the geospatial tool. These files have been modified to access data files within their new archived locations.
 
 The archived scripts can be ran in the following order to reprocess raw SFBC data files:
 
