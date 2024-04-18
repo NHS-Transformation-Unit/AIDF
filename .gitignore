@@ -56,4 +56,4 @@ rsconnect/
 *.xlsx
 *.csv
 !data/geospatial/*.xlsx
-!data/processed\ SFBC/*xlsx
+!data/processed SFBC/*.csv
