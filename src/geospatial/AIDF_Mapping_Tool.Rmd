@@ -1,0 +1,256 @@
+---
+title: "AI Diagnostic Fund Network Mapping"
+author: "NHS Transformation Unit"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    toc_collapsed: true
+    css: ../config/nhs_tu_theme.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+source("../config/r_scripts/packages.R")
+source("../geospatial/r_scripts/geojson.R")
+source("../geospatial/r_scripts/implementation/implementation_mapping.R")
+source("../geospatial/r_scripts/modality/modality_mapping.R")
+source("../geospatial/r_scripts/network/network_mapping.R")
+
+```
+
+```{r logo, echo = FALSE}
+
+htmltools::img(src = knitr::image_uri(paste0(here(), "/images/TU_logo_large.png")), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:5%; padding:10px;',
+               width = "180px",
+               heigth = "180px")
+
+```
+
+## Introduction
+***
+
+The AI Diagnostic Fund (AIDF) will provide funding to accelerate the deployment of the most promising AI imaging and decision support tools to help diagnose patients more quickly.
+
+£21 million will be provided to 12 imaging networks, covering 71 NHS trusts across England, to speed up the roll out of AI diagnostic tools.
+
+The AI Diagnostic Fund will prioritise certain technologies, such as tools that can support clinicians to analyse chest X-Rays - the most common tool used to assist a diagnosis for lung cancer - which is the leading cause of cancer death in the UK. With more than 600,000 chest X-rays performed each month in England, the deployment of diagnostic AI tools will potentially assist clinicians in diagnosing cancer earlier, which will improve patient outcomes.
+
+More information on the AIDF can be found [here](https://transform.england.nhs.uk/ai-lab/ai-lab-programmes/ai-in-imaging/ai-diagnostic-fund/).
+
+This mapping tool has been developed by the NHS Transformation Unit to provide business intelligence support to the AIDF by presenting AI data, monitoring progress, and provide data insights.
+
+
+## AIDF Member Mapping {.tabset .tabset-fade}
+***
+
+This mapping tool presents data on the following information related to each participating Trust:
+
+* Trust
+* Imaging Network
+* NHS Region
+* Modality
+* Body Part
+* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
+
+There is potential to include data relating to the AI supplier/product in future iterations of this tool.
+
+
+### AIDF Member Map 1
+The map below visualises the location of each NHS Trust currently participating in the AIDF initiative. The colour of each Trust boundary corresponds to its parent Imaging Network. Non-participating Trusts are visualised using <span style="color:#97bdb0; font-weight:bold;">green-grey</span> to provide perspective.
+
+Additionally, the sliding filter below the map allows the user to select the implementation date range, effectively allowing users to visualise the uptake of AI diagnostic tools across the UK over time. Users can start and stop the inbuilt filter animation using the blue 'play/pause' button in the bottom right corner of the visualisation.
+
+```{r imp_mapping, echo=FALSE, fig.align='center'}
+
+# Create a SharedData object
+OHID_L_shared <- SharedData$new(OHID_shp_dates)
+
+# Creating the base leaflet map
+imp_mapping <- leaflet() %>%
+  addTiles(urlTemplate = "") %>%
+  htmlwidgets::onRender("
+    function(el, x) {
+      el.style.backgroundColor = 'white';
+    }") %>%
+  
+  addPolygons(
+    data = OHID_merge,
+    fillColor = "lightgrey",
+    fillOpacity = 0.05,
+    color = "rgba(46, 139, 87, 0.5)",
+    weight = 1.25,
+    stroke = TRUE,
+    group = "NL Providers") %>%
+  
+  addLayersControl(
+    overlayGroups = c("NL Providers"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  
+  addPolygons(
+    data = OHID_L_shared,
+    color = ~color_palette(`Network Name 1`),
+    opacity = 0.8,
+    weight = 1.25,
+    stroke = TRUE,
+    group = "Live Providers",
+    popup = ~paste(
+      "Trust: ", Trust, "<br>",
+      "Network Name: ", `Network Name 1`, "<br>",
+      "Region: ", Region, "<br>",
+      "Modality: ", Modality, "<br>",
+      "Body Part: ", `Body_Part`, "<br>",
+      "Implementation End Date: ", `Net_Implementation_End`
+    )) %>%
+  
+  addLayersControl(
+    overlayGroups = c("Live Providers"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+bscols(widths = c(10, 1),
+       list(filter_slider(id = "Net_Implementation_End", label = "Implementation End Date: ",
+                          sharedData = OHID_L_shared, column = ~Net_Implementation_End)))
+            
+imp_mapping
+
+```
+
+### Metadata
+Data relating to the different networks currently progressing with the AIDF initiative can be found [here](https://future.nhs.uk/NationalDiagnosticsProgramme/view?objectId=45347088).
+
+## AIDF Modality Mapping {.tabset .tabset-fade}
+***
+
+Similar to the AIDF Member Mapping (UK) above, this tool presents data on the following information related to each participating Trust:
+
+* Trust
+* Imaging Network
+* NHS Region
+* Body Part
+* Implementation End Date (the date that the Imaging Network went live with their respective AI tool)
+
+However, this tool uses colour to differentiate between the targeted modality of each Trust's implementation: Trusts using the tools to support CT scanning procedures are visualised in <span style="color:blue; font-weight:bold;">blue</span>, Trusts using the tools to support X-ray imaging are visualised in <span style="color:red; font-weight:bold;">red</span> and Trust using both X-Ray imaging and CT scanning procedures are visualised in <span style="color:orange; font-weight:bold;">orange</span>.
+
+
+### All Modalities
+
+This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging, CT scanning procedures or both modalities. Please use the layer control to visualise specific modalities.
+
+```{r map_output_1, echo=FALSE, fig.align='center'}
+AIDF_Map_2
+```
+
+### X-Ray
+
+This map shows the NHS Trusts utilising the AIDF to support specific X-Ray imaging procedures.
+
+```{r map_output_2, echo=FALSE, fig.align='center'}
+AIDF_Map_3
+```
+
+### CT Scan
+
+This map shows the NHS Trusts utilising the AIDF to support specific CT scanning procedures.
+
+```{r map_output_3, echo=FALSE, fig.align='center'}
+AIDF_Map_4
+```
+
+## AIDF Network Mapping {.tabset .tabset-dropdown}
+***
+
+The maps below visualize specific Imaging Network boundaries. Included within each boundary is the relative location of the respective NHS Trust HQ site for each provider currently enrolled within the AIDF initiative.
+
+Please use the drop down menu below the visualization to select the Imaging Network you wish to visualize.
+
+### Norfolk, Suffolk & North Essex
+
+```{r E1_Map, echo=FALSE}
+E1_Map
+```
+
+### Herts West Essex, Bedford Luton and Mid and South Essex
+
+
+```{r E2_Map, echo=FALSE}
+E2_Map
+```
+
+### East Midlands (EMRAD)
+
+
+```{r EM1_Map, echo=FALSE}
+EM1_Map
+```
+
+### Hull and North Yorkshire
+
+
+```{r HNY_Map, echo=FALSE}
+HNY_Map
+```
+
+### North East London
+
+
+```{r NEL1_Map, echo=FALSE}
+NEL1_Map
+```
+
+### North East and North Cumbria
+
+
+```{r NENC_Map, echo=FALSE}
+NENC_Map
+```
+
+### Cheshire and Merseyside
+
+
+```{r NWCM_Map, echo=FALSE}
+NWCM_Map
+```
+
+### Greater Manchester
+
+
+```{r NWGM_Map, echo=FALSE}
+NWGM_Map
+```
+
+### North West London
+
+
+```{r NWL1_Map, echo=FALSE}
+NWL1_Map
+```
+
+### Surrey, Sussex and Frimley
+
+
+```{r SE2_Map, echo=FALSE}
+SE2_Map
+```
+
+### Devon, Cornwall and Isles of Scilly (PenRAD)
+
+
+```{r SW1_Map, echo=FALSE}
+SW1_Map
+```
+
+### Yorkshire, the Humber and North Lincolnshire (YIC)
+
+
+```{r YIC_Map, echo=FALSE}
+YIC_Map
+```
+
+The data that is contained within the current tool is accurate as of 2024-03-25.

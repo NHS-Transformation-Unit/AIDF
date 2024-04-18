@@ -1,6 +1,7 @@
-# Script for the loading of SFBC data from raw Excel files extracted from NHS Futures site
 
-folder_path <- paste0(here(), "/data/Raw SFBC/")
+# Loading SFBC data from raw Excel files
+
+folder_path <- paste0(here(), "/data/archived/raw SFBC/")
 
 sheet_names <- function(file_path) {
   
@@ -26,7 +27,7 @@ target_sheets <- all_sheet_names_df_long %>%
   filter(!Sheet_Name %in% c("Front Sheet", "dropdowns", "Master Sheet",
                             "AI Supplier Cost Detail", "GM Activity & Perfromance",
                             "apportioned costs and benefits", "Year by Year - Trusts", 
-                            "Saving calculation methodology"))
+                            "Saving calculation methodology", "GC workings"))
 
 read_sheets_and_bind <- function(folder_path, sheets_to_read, range) {
   

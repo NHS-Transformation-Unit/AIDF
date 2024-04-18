@@ -20,6 +20,7 @@
 
 # RStudio files
 .Rproj.user/
+.RProj
 
 # produced vignettes
 vignettes/*.html
@@ -54,3 +55,4 @@ rsconnect/
 # Excel and CSV files
 *.xlsx
 *.csv
+!data/geospatial/*.xlsx

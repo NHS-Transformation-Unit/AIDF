@@ -20,7 +20,7 @@ This tool aims to visualise three aspects of the AIDF programme:
 2. The imaging procedure modality of each Imaging Network's planned AIDF utilisation.
 3. Geospatial visualisation of each Imaging Network's commissioning boundary and respective NHS Trust HQ locations.
 
-The geospatial visualisations within this mapping tool have been created using the `leaflet()` functions and Shiny applications within the R programming language.
+The geospatial visualisations within this mapping tool have been created using the `leaflet()` functions and libraries within the R programming language.
 
 <br/>
 
@@ -32,7 +32,7 @@ Users will need to ensure their working directory is structured as outlined in t
 
 As well as the scripts included within this Git repository, there are three data files users will need to run the mapping tool, as well as an MSOA shapefile. These are outlined within the [`data`](#data) section of this ReadMe.
 
-Following the cloning of this repository to the user's preferred IDE, and assuming all the constituent data files are located in the appropriate folder, the mapping tool can be ran by **knitting the `AIDF_Mapping_Tool.Rmd` document** found within the `src > r_scripts > geospatial` folder. The tool can then be visualised within the IDE or exported to an appropriate browser application.
+Following the cloning of this repository to the user's preferred IDE, and assuming all the constituent data files are located in the appropriate folder, the mapping tool can be ran by **knitting the `AIDF_Mapping_Tool.Rmd` document** found within the `src > geospatial` folder. The tool can then be visualised within the IDE or exported to an appropriate browser application.
 
 In summary:
 
@@ -52,21 +52,22 @@ At present the structure of the repository is:
 
 ├─── data
      └─── archived
+          └─── geospatial
           └─── raw SFBC
           └─── TU summaries
-          └─── geospatial
-     └─── geospatial
-          └─── MSOA shapefile
+     └─── Geospatial
+          └─── MSOA Shapefile
      └─── processed SFBC
-     
+├─── documentation   
 ├─── images
 └─── src
      └─── config
+          └─── r_scripts
      └─── geospatial
           └─── r_scripts
-               └─── implementation
-               └─── modality
-               └─── network
+               └─── Implementation
+               └─── Modality
+               └─── Network
      └─── processing (archived)
           └─── r_scripts
 ```
@@ -90,16 +91,16 @@ Images such as TU logos and branding to add to outputs.
 
 ### `src`
 
-All code is stored in `src`. This is subdivided into four modules:
+All code is stored in `src`. This is subdivided into three modules:
 
-1. `config`: Files for configuring the output such as the `theme.css` for the html output.
+1. `config`: Files for configuring the output such as the `theme.css` for the html output and the `.packages.R` file containing the dependent packages.
 2. `geospatial`: Files for the creation of the geospatial html tool.
 3. `processing (archived)`: Files for extracting data from SBFC files for the creation of the geospatial tool. These scripts remain from an older iteration of the model and are currently archived.
-4. `requirements`: Requirements file for building the output html such as the `packages.R` script.
+
 
 ## Contributors
 
 This repository has been created and developed by:
 
--   [Andy Wilson](https://github.com/ASW-Analyst)
 -   [Elliot Royle](https://github.com/elliotroyle)
+-   [Andy Wilson](https://github.com/ASW-Analyst)
